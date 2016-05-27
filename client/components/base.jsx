@@ -1,6 +1,7 @@
 "use strict";
-import React    from 'react';
 import AppBar   from 'material-ui/lib/app-bar';
+import Style    from './_common/_baseStyle/'
+import React    from 'react';
 
 export default class Base extends React.Component{
   constructor(props, context){
@@ -10,17 +11,11 @@ export default class Base extends React.Component{
   }
 
   render(){
-    return(
-      <div className="baseComponent">
-        <div className="header-area" style={{width: "100%"}}>
-          <AppBar title="Todo App" showMenuIconButton={false}/>
-        </div>
-        <div className="body-area" style={{width: "100%"}} >
-          <div className="content-area" style={{width:"50%", margin: "0px auto"}} >
-            {this.props.children}
-          </div>
-        </div>
+    let style = Style.styles;
 
+    return(
+      <div className="baseComponent" style={style.baseComponent} >
+        {this.props.children}
       </div>
     )
   }

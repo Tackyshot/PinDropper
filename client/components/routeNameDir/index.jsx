@@ -1,1 +1,0 @@
-//empty route base component
