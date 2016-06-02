@@ -5,20 +5,26 @@ export default new class Style {
   constructor(){
     let theme = Theme.theme;
 
+    this.innerHeight = window.innerHeight;
+    window.addEventListener('resize', (e)=>{
+      this.innerHeight = window.innerHeight;
+    });
+
     this.styles = {
       corkboard: {
         padding: '0px',
         margin: '0px',
         width: '100%',
-        height: '100%',
-        maxHeight: '100%',
+        height: `${this.innerHeight}px`,
+        maxHeight: `${this.innerHeight}px`,
       },
       canvas: {
+        position: 'absolute',
         padding: '0px',
         margin: '0px',
         width: '100%',
-        height: '100%',
-        maxHeight: '100%'
+        height: `${this.innerHeight}px`,
+        maxHeight: `${this.innerHeight}px`
       },
       canvasTools: {
         display: 'none',
@@ -28,46 +34,44 @@ export default new class Style {
 
       },
       corkboardMenu: {
-        width: '100%',
-        maxHeight: '100%',
+        zIndex: '10'
+        /*width: '100%',
+        maxHeight: '100%',*/
       },
       cbHideMenuBtn: {
-        width: '5%'
+        width: '32px'
       },
       cbMenuBar: {
-        width: '5%',
-        maxHeight: '100%'
+        position: 'absolute',
+        right: '0px',
+        maxWidth: '64px',
+        height: `${this.innerHeight}px`,
+        maxHeight: `${this.innerHeight}px`,
+        listStyleType: 'none',
+        padding: '0px',
+        margin: '0px'
       },
       cbMenuContent: {
-        width: '95%',
-        maxHeight: '100%'
+        position: 'absolute',
+        right:'64px',
+        height: `${this.innerHeight-30}px`,
+        maxHeight: `${this.innerHeight-30}px`,
+        padding: '15px',
+        border: '2px solid #CECECE1',
+        borderRadius: '3px',
+        backgroundColor: 'white'
       },
-      /*expandableStyle: {
-        backgroundColor: theme.contrastColor,//'#5E412F',
-        borderColor: "#F07818"
+      cbMenuItem:{
+        width: '64px',
+        height: '64px',
+        cursor: 'pointer',
+        borderRadius: '3px'
       },
-      expandableIconColor: theme.accentColor,
-      cbStyle :{
-        width: 'initial',
-        float: 'left',
-        display: 'inline-block'
-      },
-      cbLabelStyle: { //'checkboxLabelStyle'
-        fontFamily: "'Open Sans Condensed', sans-serif",
-        fontSize: '2em',
-        display: 'inline-block',
-        float: 'left',
-        margin: '0',
-        color: theme.secondaryColor, //"white"
-        lineHeight: '75%'
-      },
-      cbIconStyle: {
-        fill: theme.accentColor, //"white"
-        float: 'left'
-      },
-      contentArea: {
-        padding: '0px 3%'
-      },*/
+      cbMenuIcon: {
+        width: '48px',
+        height: '48px',
+        margin: '8px'
+      }
 
     }//styles
   }//constructor

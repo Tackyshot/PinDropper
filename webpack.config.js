@@ -14,6 +14,10 @@ let webpackConfig = {
         test: /(\.jsx$|\.js$)/,
         exclude: /(node_modules|bower_components)/,
         loaders: ['babel']
+      },
+      {
+        test: /\.css$/,
+        loader: "style-loader!css-loader"
       }
     ]
   },

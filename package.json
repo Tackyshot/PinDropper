@@ -22,6 +22,7 @@
     "react-addons-transition-group": "^0.14.7",
     "react-addons-update": "^0.14.7",
     "react-dom": "^0.14.2",
+    "react-medium-editor": "^1.7.1",
     "react-router": "^1.0.0",
     "react-tap-event-plugin": "^0.2.2",
     "superagent": "^1.4.0"
@@ -34,10 +35,12 @@
     "babel-register": "^6.9.0",
     "chai-enzyme": "^0.4.2",
     "code": "^2.3.0",
+    "css-loader": "^0.23.1",
     "enzyme": "^2.3.0",
     "lab": "^10.5.1",
     "mocha": "^2.4.5",
     "react-addons-test-utils": "^0.14.7",
+    "style-loader": "^0.13.1",
     "webpack": "^1.13.0"
   }
 }
