@@ -8,6 +8,15 @@ let webpackConfig = {
     path:path.resolve(__dirname, 'server/assets/client/js/'),
     filename: "bundle.js"
   },
+  resolve:{
+    alias:{
+      textfield: `${__dirname}/client/components/_common/textField/`,
+      theme: `${__dirname}/client/components/_common/_theme/`,
+      corkboard: `${__dirname}/client/components/_common/corkboard/`,
+      style: './style/'
+    },
+    extensions: ["", ".webpack.js", ".web.js", ".js", '.jsx']
+  },
   module:{
     loaders: [
       {

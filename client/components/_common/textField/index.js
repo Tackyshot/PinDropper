@@ -47,7 +47,8 @@ TextField.defaultProps = {
   onChange: ()=>{},
   disabled: false,
   text: '',
-  style: {}
+  style: {},
+  type: 'text' //Todo: add functionality for different type of inputs (num, text, email, etc...)
 };
 
 TextField.propTypes = {

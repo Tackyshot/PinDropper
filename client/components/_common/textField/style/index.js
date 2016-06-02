@@ -13,9 +13,11 @@ export default new class Style {
       inputSm: {
         width: '32px',
         height: height,
+        maxHeight: height,
         border: border,
         fontSize: fontSize,
-        textAlign: 'center'
+        textAlign: 'center',
+        padding: 0
       },
       inputMed:{
         witdth: '64px',

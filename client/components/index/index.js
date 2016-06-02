@@ -5,7 +5,7 @@ import {
         Corkboard,
         CorkboardMenu,
         CorkboardMenuItem,
-       }                from '../_common/corkboard/'
+       }                from 'corkboard'
 import {
         Armor,
         Inventory,
@@ -14,7 +14,7 @@ import {
         Spells,
         Stats,
         Weapons
-      }                 from './cbMenuItems/'
+      }                 from './rightMenuContent/'
 /*
 import ContentWrapper   from '../_common/contentWrapper/';
 import TodoItem         from './todoItem.jsx';

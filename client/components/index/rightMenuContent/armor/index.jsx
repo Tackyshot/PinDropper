@@ -1,11 +1,8 @@
 "use strict";
 import React            from 'react';
 import _                from 'lodash';
-import {
-  CorkboardMenuItem,
-}                       from '../../_common/corkboard/';
 
-export default class Weapons extends React.Component{
+export default class Armor extends React.Component{
   constructor(props, context){
     super(props, context);
 
@@ -21,7 +18,7 @@ export default class Weapons extends React.Component{
 
   render(){
     return (
-        <h2> this is where weapons go</h2>
+        <h2>this is where armor goes</h2>
     )
   }//render
 

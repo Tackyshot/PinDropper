@@ -1,9 +1,6 @@
 "use strict";
 import React            from 'react';
 import _                from 'lodash';
-import {
-  CorkboardMenuItem,
-}                       from '../../_common/corkboard/';
 
 export default class Inventory extends React.Component{
   constructor(props, context){
