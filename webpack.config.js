@@ -13,7 +13,9 @@ let webpackConfig = {
       textfield: `${__dirname}/client/components/_common/textField/`,
       theme: `${__dirname}/client/components/_common/_theme/`,
       corkboard: `${__dirname}/client/components/_common/corkboard/`,
-      style: './style/'
+      style: './style/',
+      models: `${__dirname}/server/assets/models`,
+      data: `${__dirname}/server/assets/data`
     },
     extensions: ["", ".webpack.js", ".web.js", ".js", '.jsx']
   },

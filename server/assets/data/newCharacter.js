@@ -1,4 +1,7 @@
 module.exports = {
+  account: '', //USERNAME GOES HERE
+  campaign: '', //CAMPAIGN NAME GOES HERE
+  retired: false,
   description: {
     name: '',
     class: '',
@@ -17,32 +20,32 @@ module.exports = {
   },
   baseStats: [
     {
-      _name: 'str',
+      name: 'str',
       score: 0,
       tempScore: 0
     },
     {
-      _name: 'dex',
+      name: 'dex',
       score: 0,
       tempScore: 0
     },
     {
-      _name: 'con',
+      name: 'con',
       score: 0,
       tempScore: 0
     },
     {
-      _name: 'int',
+      name: 'int',
       score: 0,
       tempScore: 0
     },
     {
-      _name: 'wis',
+      name: 'wis',
       score: 0,
       tempScore: 0
     },
     {
-      _name: 'cha',
+      name: 'cha',
       score: 0,
       tempScore: 0
     }
@@ -66,36 +69,36 @@ module.exports = {
   },
   attack: [
     {
-      _name: 'melee',
+      name: 'melee',
       misc: [], //array of ints
       temp: [],
     },
     {
-      _name: 'range',
+      name: 'range',
       misc: [], //array of ints
       temp: [],
     },
     {
-      _name: 'grapple',
+      name: 'grapple',
       misc: [], //array of ints
-      temp: 0,
+      temp: [],
     }
   ],
   saves:[
     {
-      _name: 'fort',
+      name: 'fort',
       magic: 0,
       misc: [],
       temp: 0,
     },
     {
-      _name: 'ref',
+      name: 'ref',
       magic: 0,
       misc: [],
       temp: 0,
     },
     {
-      _name: 'will',
+      name: 'will',
       magic: 0,
       misc: [],
       temp: 0,
@@ -169,7 +172,7 @@ module.exports = {
     skillList: [
       {
         name: '',
-        mod: '',
+        mod: '', //refrences str or cha or something.
         ranks: 0,
         misc: [],
         classSkill: false,
