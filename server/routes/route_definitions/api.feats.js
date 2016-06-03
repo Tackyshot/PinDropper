@@ -14,22 +14,22 @@ module.exports  = {
       case "get":
         res()
           .type("application/json");
-      break;
+        break;
 
       case "post":
         res()
           .type("application/json");
-      break;
+        break;
 
       case "put":
         res()
           .type("application/json");
-      break;
+        break;
 
       case "delete":
         res()
           .type("application/json");
-      break;
+        break;
     }
 
   }//handler

@@ -185,6 +185,7 @@ module.exports = {
       {
         name:'',
         prepared: 0,
+        preparedAt: 0,
         components: {
           verbal: false,
           somatic: false,
