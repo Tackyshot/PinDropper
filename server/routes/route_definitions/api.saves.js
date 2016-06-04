@@ -5,7 +5,7 @@ const Account = require('../../assets/models/account.js');
 
 module.exports  = {
   method: ['GET', 'POST', 'PUT', 'DELETE'],
-  path: "/api/{campaignId}/",
+  path: "/api/{campaignId}/saves",
   handler: function (req, res){
     mongoose.connect('mongodb://localhost/test');
 
