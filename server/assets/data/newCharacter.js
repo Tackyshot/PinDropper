@@ -197,8 +197,8 @@ module.exports = {
         range: '',
         target: '',
         duration: '',
-        save: '',
-        resistace: '',
+        saveType: '',
+        resistence: '',
         description: '',
         modifiers: {
           skills:[
@@ -241,6 +241,5 @@ module.exports = {
       maxWeight: 0
     }
   ]
-
 
 }

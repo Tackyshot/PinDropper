@@ -1,82 +1,85 @@
 "use strict";
-const mongoose = require('mongoose');
-
-const Account = require('../../assets/models/account.js');
+const ConnectDb = require('../../assets/helpers/connectdb');
+const Character = require('../../assets/models/character');
+const CharData  = require('../../assets/data/newCharacter');
 
 module.exports  = {
-  method: ['GET', 'POST', 'PUT', 'DELETE'],
-  path: "/api/{campaignId}/newchar",
-  handler: function (req, res){
-    mongoose.connect('mongodb://localhost/test');
-    let db = mongoose.connection;
-    console.log("METHOD:", req.method);
+  method: ['POST'],
+  path: "/api/{campaignId}/{charId}/newchar",
+  handler: function (req, res) {
+    const connectdb = new ConnectDb();
 
-    switch(req.method){
+    connectdb.connect((done)=> {
+      switch (req.method) {
+        case "post":
+          CharData.account = 'dillbill';
+          CharData.campaign = '1';
 
-      case "get":
+          let char = new Character(CharData);
+          char.save((err, character)=>{
+            console.log('create character for account:', 'dillbill', character);
+            let response = character;
+            if(err) {
+              response = {err: "database error: could not create character.", success: false};
+              console.log('err');
+            }
 
-        db.on('error', console.error.bind(console, 'connection error:'));
-        db.once('open', function() {
-          // we're connected!
-          Account.findOne({username: 'dillbill'}, (err, account)=>{
+            res(response)
+              .type("application/json");
+            done();
+          });
+        break;
+      }
+    });
+
+    /*const connectdb = new ConnectDb();
+
+    connectdb.connect((done)=> {
+      switch (req.method) {
+        case "get":
+
+          Account.findOne({username: 'dillbill'}, (err, account)=> {
             console.log("ACCOUNT RETURN:", account);
             res(account)
               .type("application/json");
-            db.close(()=>{
-              console.log("close db connection")
-            })
+            done();
           });
-        });
-      break;
+          break;
 
-      case "post":
-        db.on('error', console.error.bind(console, 'connection error:'));
-        db.once('open', function() {
-          // we're connected!
+        case "post":
           let account = new Account({
             username: 'dillbill',
             password: 'TestPass',
             email: "testemail@yahoo.com"
           });
 
-          account.save((err, accountz)=>{
+          account.save((err, accountz)=> {
             console.log("ACCOUNT CREATE:", account);
             res(accountz)
               .type("application/json");
-            db.close(()=>{
-              console.log("close db connection")
-            })
-          })
+            done();
+          });
+          break;
 
-        });
-      break;
-
-      case "put":
-        db.on('error', console.error.bind(console, 'connection error:'));
-        db.once('open', function() {
-          // we're connected!
-          Account.update({username: 'dillbill'}, {password: 'Updated Password!'}, (err, accountt)=>{
-            if(err) console.log("UPDATE ERROR:", err);
+        case "put":
+          Account.findOneAndUpdate({username: 'dillbill'}, {password: 'Updated Password!'}, (err, accountt)=> {
+            if (err) console.log("UPDATE ERROR:", err);
             else console.log("UPDATE ACCOUNT:", accountt);
 
-            Account.findOne({username: 'dillbill'}, (err, account)=>{
+            Account.findOne({username: 'dillbill'}, (err, account)=> {
               console.log("ACCOUNT EDIT:", account);
               res(account)
                 .type("application/json");
-              db.close(()=>{
-                console.log("close db connection")
-              })
+              done();
             });
           });
-        });
-      break;
+          break;
 
-      case "delete":
-        res()
-          .type("application/json");
-      break;
-    }
-
-  }//handler
-
+        case "delete":
+          res()
+            .type("application/json");
+          break;
+      }
+    });*/
+  }
 }//exports

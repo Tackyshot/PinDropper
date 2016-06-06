@@ -1,54 +1,39 @@
 "use strict";
-const mongoose = require('mongoose');
-
-const Account = require('../../assets/models/account.js');
+const ConnectDb = require('../../assets/helpers/connectdb');
+const Character = require('../../assets/models/character');
 
 module.exports  = {
   method: ['GET', 'POST', 'PUT', 'DELETE'],
-  path: "/api/{campaignId}/character",
+  path: "/api/{campaignId}/{charId}/character",
   handler: function (req, res){
-    mongoose.connect('mongodb://localhost/test');
-    let character = {
-      description: {
-        name: '',
-        class: '',
-        level: 0,
-        alignment: '',
-        race: '',
-        subrace: '',
-        diety:'',
-        size: '',
-        height: '',
-        weight: 0,
-        gender: '',
-        currentXP: 0,
-        neededXP: 0,
-        speed: 0
-      }
+    let searchBy = {
+      _id: 'someID', //req.params.charID
+      campaign: '1', //req.params.campaign
+      account: 'dillbill', //TODO: replace these with variables from auth and path
     };
 
-    switch(req.method){
+    ConnectDb.connect((done)=>{
+      switch(req.method){
+        case "get":
+          Character.findOne(searchBy, (err, character)=>{
+            if(err) console.log(err);
 
-      case "get":
-        res()
-          .type("application/json");
+            res({description: character.description})
+              .type("application/json");
+            done();
+          });
         break;
 
-      case "post":
-        res()
-          .type("application/json");
+        case "put":
+          searchBy.retired = false; //must not be a retired character to make edits.
+          Character.findOneAndUpdate(searchBy, req.data, (err, character)=>{
+            res({description: character.description})
+              .type("application/json");
+            done();
+          });
         break;
-
-      case "put":
-        res()
-          .type("application/json");
-        break;
-
-      case "delete":
-        res()
-          .type("application/json");
-        break;
-    }
+      }
+    });
 
   }//handler
 

@@ -48,21 +48,21 @@ export default class Stats extends React.Component{
     let val = e.target.value;
     if(val === 'get'){
       request
-        .get('/api/{campaignId}/newchar')
+        .get(`/api/${'1'}/newchar`)
         .end((err, res)=>{
           console.log("GET RES:", res.text);
         });
     }
     else if(val === 'post'){
       request
-        .post('/api/{campaignId}/newchar')
+        .post(`/api/${'1'}/newchar`)
         .end((err, res)=>{
           console.log("POST RES:", res.text);
         });
     }
     else if(val == 'put'){
       request
-        .put('/api/{campaignId}/newchar')
+        .put(`/api/${'1'}/newchar`)
         .end((err, res)=>{
           console.log("PUT RES:", res.text);
         });

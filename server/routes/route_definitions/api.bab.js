@@ -1,36 +1,38 @@
 "use strict";
-const mongoose = require('mongoose');
-
-const Account = require('../../assets/models/account.js');
+const ConnectDb = require('../../assets/helpers/connectdb');
+const Character = require('../../assets/models/character');
 
 module.exports  = {
-  method: ['GET', 'POST', 'PUT', 'DELETE'],
-  path: "/api/{campaignId}/baseattack",
+  method: ['GET', 'PUT'],
+  path: "/api/{campaignId}/{charId}/bab",
   handler: function (req, res){
-    mongoose.connect('mongodb://localhost/test');
+    let connectdb = new ConnectDb();
+    let searchBy = {
+      _id: 'someID', //req.params.charID
+      campaign: '1', //req.params.campaign
+      account: 'dillbill', //TODO: replace these with variables from auth and path
+    };
 
-    switch(req.method){
+    connectdb.connect((done)=>{
+      switch(req.method){
 
-      case "get":
-        res()
-          .type("application/json");
-        break;
+        case "get":
+          Character.findOne(searchBy, (err, character)=>{
+            if(err) console.log(err);
+            res({bab: character.bab})
+              .type("application/json");
+          });
+          break;
 
-      case "post":
-        res()
-          .type("application/json");
-        break;
+        case "put":
+          Character.findOneAndUpdate(searchBy, req.data, (err, character)=>{
+            res({bab: character.bab})
+              .type("application/json");
+          });
+          break;
 
-      case "put":
-        res()
-          .type("application/json");
-        break;
-
-      case "delete":
-        res()
-          .type("application/json");
-        break;
-    }
+      }
+    })
 
   }//handler
 
