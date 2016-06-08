@@ -1,4 +1,6 @@
 "use strict";
+const fs  = require('fs');
+const dir = __dirname + '/../../assets/client/views/login.html';
 module.exports = {
   method: ['GET', 'POST'],
   path: "/login",
@@ -14,7 +16,7 @@ module.exports = {
     handler: (request, reply)=>{
       const users = {
         john: {
-          id: 'john',
+          id: 'dillbill',
           password: 'password',
           name: 'John Doe'
         }
@@ -48,19 +50,21 @@ module.exports = {
       if (request.method === 'get' ||
         message) {
 
-        return reply('<html><head><title>Login page</title></head><body>' +
+        return reply(fs.readFileSync(dir))
+          .type('text/html');
+        /*return reply('<html><head><title>Login page</title></head><body>' +
           (message ? '<h3>' + message + '</h3><br/>' : '') +
           '<form method="post" action="/login">' +
           'Username: <input type="text" name="username"><br>' +
           'Password: <input type="password" name="password"><br/>' +
-          '<input type="submit" value="Login"></form></body></html>');
+          '<input type="submit" value="Login"></form></body></html>');*/
       }
 
       const sid = String(++uuid);
       request.server.app.cache.set(sid, { account: account }, 0, (err) => {
 
         if (err) {
-          reply(err);
+          return reply(err);
         }
 
         request.cookieAuth.set({ sid: sid });

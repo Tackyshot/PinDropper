@@ -6,13 +6,14 @@ module.exports  = {
   method: ['GET', 'POST', 'PUT', 'DELETE'],
   path: "/api/{campaignId}/{charId}/character",
   handler: function (req, res){
+    const connectdb = new ConnectDb();
     let searchBy = {
       _id: 'someID', //req.params.charID
       campaign: '1', //req.params.campaign
       account: 'dillbill', //TODO: replace these with variables from auth and path
     };
 
-    ConnectDb.connect((done)=>{
+    connectdb.connect((done)=>{
       switch(req.method){
         case "get":
           Character.findOne(searchBy, (err, character)=>{
