@@ -1,13 +1,29 @@
 "use strict";
-import AppBar   from 'material-ui/lib/app-bar';
-import Style    from 'style'
-import React    from 'react';
+import React            from 'react';
+import _                from 'lodash';
+import {
+        Corkboard,
+        CorkboardMenu,
+        CorkboardMenuItem,
+       }                from 'corkboard'
+import {
+        Armor,
+        Inventory,
+        Notes,
+        Skills,
+        Spells,
+        Stats,
+        Weapons
+      }                 from './rightMenuContent/';
 
 export default class Index extends React.Component{
   constructor(props, context){
     super(props, context);
 
-    this.state = {}
+    this.state = {};
+
+    //rebindings
+
   }
 
   componentWillMount(){
@@ -15,12 +31,39 @@ export default class Index extends React.Component{
   }
 
   render(){
-    let style = Style.styles;
+    return (
+      <Corkboard>
+        <CorkboardMenu>
+          <CorkboardMenuItem menuIcon='viking-helmet-48.png' >
+            <Stats />
+          </CorkboardMenuItem>
 
-    return(
-      <div className="ApplicationIndex" >
+          <CorkboardMenuItem menuIcon='sword-48.png' >
+            <Weapons />
+          </CorkboardMenuItem>
 
-      </div>
+          <CorkboardMenuItem menuIcon='armored-breastplate-48.png' >
+            <Armor />
+          </CorkboardMenuItem>
+
+          <CorkboardMenuItem menuIcon='rucksack-48.png' >
+            <Inventory />
+          </CorkboardMenuItem>
+
+          <CorkboardMenuItem menuIcon='tasks-48.png' >
+            <Skills />
+          </CorkboardMenuItem>
+
+          <CorkboardMenuItem menuIcon='wizard-48.png' >
+            <Spells />
+          </CorkboardMenuItem>
+
+          <CorkboardMenuItem menuIcon='note-48.png' >
+            <Notes />
+          </CorkboardMenuItem>
+        </CorkboardMenu>
+      </Corkboard>
     )
-  }
+  }//render
+
 }

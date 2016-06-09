@@ -15,6 +15,9 @@ export default class Base extends React.Component{
 
     return(
       <div className="baseComponent" style={style.baseComponent} >
+        <div>
+
+        </div>
         {this.props.children}
       </div>
     )

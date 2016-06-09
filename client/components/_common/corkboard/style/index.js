@@ -54,8 +54,8 @@ export default new class Style {
       cbMenuContent: {
         position: 'absolute',
         right:'64px',
-        height: `${this.innerHeight-30}px`,
-        maxHeight: `${this.innerHeight-30}px`,
+        height: `${this.innerHeight-30}px`, //-30 because padding
+        maxHeight: `${this.innerHeight-30}px`, //-30 because padding
         padding: '15px',
         border: '2px solid #CECECE1',
         borderRadius: '3px',
