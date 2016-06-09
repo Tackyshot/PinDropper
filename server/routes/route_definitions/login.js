@@ -29,7 +29,7 @@ module.exports = {
 
           connectdb.connect((done)=> {
             Account.findOne({username: payload.username}, (err, account)=> {
-              if (err) console.log('REGISTER ERR:', err);
+              if (err) console.log('LOGIN ERR:', err);
               if (account === null) return res(fs.readFileSync(dir)).type('text/html');
 
               Bcrypt.compare(payload.password, account.password, (isSamePw)=>{
@@ -56,60 +56,6 @@ module.exports = {
             .type('text/html');
         break;
       };
-    },
-    /*handla: (request, reply)=>{
-      /!*EVERYTHING AFTER THIS LINE WILL BE DESTROYED*!/
-      const users = {
-        john: {
-          id: 'dillbill',
-          password: 'password',
-          name: 'John Doe'
-        }
-      };
-      let uuid = 1;
-
-      if (request.auth.isAuthenticated) {
-        return reply.redirect('/');
-      }
-
-      let message = '';
-      let account = null;
-
-      if (request.method === 'post') {
-
-        if (!request.payload.username ||
-          !request.payload.password) {
-
-          message = 'Missing username or password';
-        }
-        else {
-          account = users[request.payload.username];
-          if (!account ||
-            account.password !== request.payload.password) {
-
-            message = 'Invalid username or password';
-          }
-        }
-      }
-
-      if (request.method === 'get' ||
-        message) {
-
-        return reply(fs.readFileSync(dir))
-          .type('text/html');
-      }
-
-      const sid = String(++uuid);
-      request.server.app.cache.set(sid, { account: account }, 0, (err) => {
-
-        if (err) {
-          return reply(err);
-        }
-
-        request.cookieAuth.set({ sid: sid });
-        return reply.redirect('/');
-      });
-
-    }*/
+    }
   }
 };
