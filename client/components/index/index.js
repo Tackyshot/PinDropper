@@ -1,6 +1,6 @@
 "use strict";
 import AppBar   from 'material-ui/lib/app-bar';
-import Style    from './_common/_baseStyle/'
+import Style    from 'style'
 import React    from 'react';
 
 export default class Index extends React.Component{
@@ -8,6 +8,10 @@ export default class Index extends React.Component{
     super(props, context);
 
     this.state = {}
+  }
+
+  componentWillMount(){
+
   }
 
   render(){
