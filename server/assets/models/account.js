@@ -6,15 +6,18 @@ let accountSchema = Schema({
 //  _id: Schema.ObjectId,
   username: {
     type: String,
-    default: ''
+    default: '',
+    required: true
   },
   password: {
     type: String,
-    default: ''
+    default: '',
+    required: true
   },
   email: {
     type: String,
-    default: ''
+    default: '',
+    required: true
   }
 });
 

@@ -3,8 +3,8 @@ import React                                       from 'react';
 import {Router, Route, IndexRoute, browserHistory} from 'react-router';
 
 //components
-import Base     from './components/base.jsx';
-import Index    from './components/index/';
+import Base         from './components/base.jsx';
+import Index        from './components/index/';
 
 export default () => {
 

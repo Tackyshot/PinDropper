@@ -17,8 +17,32 @@ module.exports = new class Server {
       }
     );
 
-    server.register(require('./routes/router.js'), (err) => {
-      if (err) return console.error("routes error: ", err);
+    server.register(require('hapi-auth-cookie'), (err)=>{
+      const cache = server.cache({ segment: 'sessions', expiresIn: 3 * 24 * 60 * 60 * 1000 });
+      server.app.cache = cache;
+      server.auth.strategy('session', 'cookie', true, {
+        password: 'password-should-be-32-characters',
+        cookie: 'sid-example',
+        redirectTo: '/login',
+        isSecure: false,
+        validateFunc: (req, session, callback)=>{
+          cache.get(session.sid, (err, cached) => {
+
+            if (err) {
+              return callback(err, false);
+            }
+            if (!cached) {
+              return callback(null, false);
+            }
+            return callback(null, true, cached.account);
+          });
+        }
+
+      });
+
+      server.register(require('./routes/router.js'), (err) => {
+        if (err) return console.error("routes error: ", err);
+      });
     });
 
   }//constructor

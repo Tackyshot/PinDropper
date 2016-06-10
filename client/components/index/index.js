@@ -14,16 +14,7 @@ import {
         Spells,
         Stats,
         Weapons
-      }                 from './rightMenuContent/'
-/*
-import ContentWrapper   from '../_common/contentWrapper/';
-import TodoItem         from './todoItem.jsx';
-import TodoActions      from '../../actions/todo-actions.jsx';
-import TodoStore        from '../../stores/todo-store.jsx';
-
-import FlatButton       from 'material-ui/lib/flat-button.js';
-import AddIcon          from 'material-ui/lib/svg-icons/content/add.js';
-*/
+      }                 from './rightMenuContent/';
 
 export default class Index extends React.Component{
   constructor(props, context){
