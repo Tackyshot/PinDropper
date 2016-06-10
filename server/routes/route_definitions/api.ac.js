@@ -10,7 +10,7 @@ module.exports  = {
     let searchBy = {
       _id: 'someID', //req.params.charID
       campaign: '1', //req.params.campaign
-      account: 'dillbill', //TODO: replace these with variables from auth and path
+      account: req.auth.credentials._id, //TODO: replace these with variables from auth and path
     };
 
     connectdb.connect((done)=>{
@@ -19,17 +19,20 @@ module.exports  = {
         case "get":
           Character.findOne(searchBy, (err, character)=>{
             if(err) console.log(err);
-            res({ac: character.ac})
-              .type("application/json");
+
+            done();
+            res({ac: character.ac}).type("application/json");
           });
-          break;
+        break;
 
         case "put":
           Character.findOneAndUpdate(searchBy, req.data, (err, character)=>{
-            res({ac: character.ac})
-              .type("application/json");
+            if(err) console.log(err);
+
+            done();
+            res({ac: character.ac}).type("application/json");
           });
-          break;
+        break;
 
       }
     });
