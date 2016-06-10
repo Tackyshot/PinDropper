@@ -1,7 +1,9 @@
 "use strict";
 import AppBar   from 'material-ui/lib/app-bar';
-import Style    from './_common/_baseStyle/'
+import Style    from '_common/_baseStyle';
 import React    from 'react';
+
+import Modal    from '_common/modal';
 
 export default class Base extends React.Component{
   constructor(props, context){
@@ -15,9 +17,9 @@ export default class Base extends React.Component{
 
     return(
       <div className="baseComponent" style={style.baseComponent} >
-        <div>
-
-        </div>
+        <Modal title="Test Modal" isOpen={true}>
+          <p>This is some test content for the modal</p>
+        </Modal>
         {this.props.children}
       </div>
     )
