@@ -12,8 +12,7 @@ let campaignSchema = Schema({
     default: ''
   },
   dm: {
-    type: Sequelize.INTEGER,
-
+    type: String
   }
 });
 

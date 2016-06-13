@@ -1,5 +1,4 @@
 "use strict";
-import AppBar   from 'material-ui/lib/app-bar';
 import Style    from '_common/_baseStyle';
 import React    from 'react';
 

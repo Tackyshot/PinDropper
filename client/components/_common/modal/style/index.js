@@ -23,9 +23,32 @@ export default new class Style {
         zIndex:'11'
       },
       modalTitleArea: {
+        margin: '10px',
+        //marginBottom: '0px'
       },
-      modalTitle:{},
-      modalCloseBtn: {}
+      modalTitle:{
+        width: '95%',
+        margin: '0px'
+      },
+      modalCloseBtn: {
+        position: 'absolute',
+        cursor: 'pointer',
+        width: '24px',
+        height: '24px',
+        top: '10px',
+        right: '10px'
+      },
+      modalHr:{
+        background: 'transparent',
+        border: 'none',
+        borderBottom: '1px solid grey',
+        margin: '0px 10px'
+      },
+      modalContentArea:{
+        margin: '10px',
+        overflowY: 'scroll',
+        maxHeight: '85%'
+      }
     }
   }
 

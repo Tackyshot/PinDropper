@@ -16,37 +16,31 @@ export default class Modal extends React.Component{
     this.closeModal     = this.closeModal.bind(this);
   }
 
+  componentWillMount(){
+    window.addEventListener('keydown', this.handleKeyPress);
+  }
+
   componentWillReceiveProps(nProps){
-    console.log('nprops');
-    if(nProps !== this.props){
+    if(nProps.isOpen !== this.state.isOpen){
       this.setState({
-        isOpen: this.props.isOpen
+        isOpen: nProps.isOpen
       });
     }
   }
 
   render(){
-    console.log('render', this.state.isOpen);
-    let style = Style.styles;
+    return this.state.isOpen ? this.modal() : null;
+  }
 
-    return(
-      <div className="modalBackground" style={style.modalBackground} >
-        <div className='modal' onKeyPress={this.handleKeyPress} style={style.modal} >
-          <div className="modalTitleArea" style={style.modalTitleArea} >
-            <p className="modalTitle" style={style.modalTitle} >{this.props.title}</p>
-            <span className='modalCloseBtn' onClick={this.handleClick} style={style.modalCloseBtn}>X</span>
-          </div>
-          {this.props.children}
-        </div>
-      </div>
-    )
+  componentWillUnmount(){
+    window.removeEventListener('keydown', this.handleKeyPress);
   }
 
   /*CUSTOM HANDLERS*/
 
   handleKeyPress(e){
     console.log('KEYPRESS');
-    if(e.keyCode === 27){
+    if(e.keyCode === 27 && this.state.isOpen){
       this.closeModal();
     }
   }
@@ -61,6 +55,25 @@ export default class Modal extends React.Component{
     this.setState({
       isOpen: false
     })
+  }
+
+  modal(){
+    let style = Style.styles;
+
+    return(
+      <div className="modalBackground" style={style.modalBackground} >
+        <div className='modal' style={style.modal} >
+          <div className="modalTitleArea" style={style.modalTitleArea} >
+            <h3 className="modalTitle" style={style.modalTitle} >{this.props.title}</h3>
+            <img className='modalCloseBtn' src='/img/delete-52.png' onClick={this.handleClick} style={style.modalCloseBtn} />
+          </div>
+          <hr className="modalHr" style={style.modalHr} />
+          <div className="modalContentArea" style={style.modalContentArea}>
+            {this.props.children}
+          </div>
+        </div>
+      </div>
+    )
   }
 
 } //Modal
