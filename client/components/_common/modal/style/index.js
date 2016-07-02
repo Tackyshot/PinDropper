@@ -18,14 +18,27 @@ export default new class Style {
         height: `${(this.innerHeight*.4)}px`,
         left: '30%',
         top: '30%',
+        padding: '15px',
         backgroundColor: 'white',
         borderRadius: '5px',
         zIndex:'11'
       },
       modalTitleArea: {
+        paddingRight: '21px'
       },
-      modalTitle:{},
-      modalCloseBtn: {}
+      modalTitle:{
+        margin: '0px',
+        fontSize: '18px',
+        fontWeight: 'bold'
+      },
+      modalCloseBtn: {
+        position: 'absolute',
+        right: '10px',
+        top: '10px',
+        width: '16px',
+        height: '16px',
+        cursor: 'pointer'
+      }
     }
   }
 

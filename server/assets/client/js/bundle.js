@@ -45712,13 +45712,28 @@
 	  }
 
 	  _createClass(Modal, [{
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      console.log("mount", this.state.isOpen);
+	      if (this.state.isOpen) {
+	        window.addEventListener('keydown', this.handleKeyPress);
+	      }
+	    }
+	  }, {
 	    key: 'componentWillReceiveProps',
 	    value: function componentWillReceiveProps(nProps) {
 	      console.log('nprops');
 	      if (nProps !== this.props) {
 	        this.setState({
-	          isOpen: this.props.isOpen
+	          isOpen: nProps.isOpen
 	        });
+	      }
+	    }
+	  }, {
+	    key: 'componentWillUpdate',
+	    value: function componentWillUpdate(nProps, nState) {
+	      if (nState.isOpen) {
+	        window.addEventListener('keydown', this.handleKeyPress);
 	      }
 	    }
 	  }, {
@@ -45727,12 +45742,14 @@
 	      console.log('render', this.state.isOpen);
 	      var style = _style2.default.styles;
 
+	      if (!this.state.isOpen) return null; //don't render modal if isn't open.
+
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'modalBackground', style: style.modalBackground },
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'modal', onKeyPress: this.handleKeyPress, style: style.modal },
+	          { className: 'modal', style: style.modal },
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'modalTitleArea', style: style.modalTitleArea },
@@ -45741,15 +45758,18 @@
 	              { className: 'modalTitle', style: style.modalTitle },
 	              this.props.title
 	            ),
-	            _react2.default.createElement(
-	              'span',
-	              { className: 'modalCloseBtn', onClick: this.handleClick, style: style.modalCloseBtn },
-	              'X'
-	            )
+	            _react2.default.createElement('img', { src: '/img/delete-52-dark.png', className: 'modalCloseBtn', onClick: this.handleClick, style: style.modalCloseBtn })
 	          ),
 	          this.props.children
 	        )
 	      );
+	    }
+	  }, {
+	    key: 'componentDidUpdate',
+	    value: function componentDidUpdate() {
+	      if (!this.state.isOpen) {
+	        window.removeEventListener('keydown', this.handleKeyPress);
+	      }
 	    }
 
 	    /*CUSTOM HANDLERS*/
@@ -45826,13 +45846,27 @@
 	        height: this.innerHeight * .4 + 'px',
 	        left: '30%',
 	        top: '30%',
+	        padding: '15px',
 	        backgroundColor: 'white',
 	        borderRadius: '5px',
 	        zIndex: '11'
 	      },
-	      modalTitleArea: {},
-	      modalTitle: {},
-	      modalCloseBtn: {}
+	      modalTitleArea: {
+	        paddingRight: '21px'
+	      },
+	      modalTitle: {
+	        margin: '0px',
+	        fontSize: '18px',
+	        fontWeight: 'bold'
+	      },
+	      modalCloseBtn: {
+	        position: 'absolute',
+	        right: '10px',
+	        top: '10px',
+	        width: '16px',
+	        height: '16px',
+	        cursor: 'pointer'
+	      }
 	    };
 	  }
 
