@@ -63,11 +63,15 @@ export default class Modal extends React.Component{
     }
   }
 
+  componentWillUnmount(){
+    window.removeEventListener('keydown', this.handleKeyPress);
+  }
+
   /*CUSTOM HANDLERS*/
 
   handleKeyPress(e){
     console.log('KEYPRESS');
-    if(e.keyCode === 27){
+    if(e.keyCode === 27 && this.state.isOpen){
       this.closeModal();
     }
   }
