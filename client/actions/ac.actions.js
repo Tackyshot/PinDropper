@@ -20,7 +20,7 @@ class AcActions {
   put(options, callback){
     const params  = options.params;
     const data    = options.data;
-    const route   = '/api/todos/' + params.todoId;
+    const route   = `/api/${campaign}/${character}/ac`;
 
     return (dispatch)=>{
       request.put(route, data, (err, data)=>{
