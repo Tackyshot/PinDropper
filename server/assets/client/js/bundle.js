@@ -48411,17 +48411,22 @@
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(CharacterPicker).call(this, props, context));
 
 	    _this.state = {
+	      isCharBtnHover: false,
+	      isNewCharHover: false,
 	      characters: {}
 	    };
 
 	    //rebindings
-
+	    _this.toggleCharBtnHover = _this.toggleCharBtnHover.bind(_this);
+	    _this.toggleNewCharHover = _this.toggleNewCharHover.bind(_this);
 	    return _this;
 	  }
 
 	  _createClass(CharacterPicker, [{
 	    key: 'componentWillMount',
-	    value: function componentWillMount() {}
+	    value: function componentWillMount() {
+	      //This is where character data is retrieved. make the action call here.
+	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
@@ -48435,78 +48440,69 @@
 	          { className: 'charbtnarea', style: style.charbtnarea },
 	          _react2.default.createElement(
 	            'button',
-	            { className: 'charbtn', style: style.charbtn },
+	            { className: 'charbtn', style: style.charbtn, value: 1, onMouseOver: this.toggleCharBtnHover, onMouseOut: this.toggleCharBtnHover },
 	            ' William Caffery '
 	          ),
 	          _react2.default.createElement(
 	            'button',
-	            { className: 'charbtn', style: style.charbtn },
+	            { className: 'charbtn', style: style.charbtn, value: 2, onMouseOver: this.toggleCharBtnHover, onMouseOut: this.toggleCharBtnHover },
 	            ' Jarvis '
 	          ),
 	          _react2.default.createElement(
 	            'button',
-	            { className: 'charbtn', style: style.charbtn },
+	            { className: 'charbtn', style: style.charbtn, value: 3, onMouseOver: this.toggleCharBtnHover, onMouseOut: this.toggleCharBtnHover },
 	            ' Glen '
 	          ),
 	          _react2.default.createElement(
 	            'button',
-	            { className: 'charbtn', style: style.charbtn },
+	            { className: 'charbtn', style: style.charbtn, value: 4, onMouseOver: this.toggleCharBtnHover, onMouseOut: this.toggleCharBtnHover },
 	            ' Varro '
 	          ),
 	          _react2.default.createElement(
 	            'button',
-	            { className: 'charbtn', style: style.charbtn },
+	            { className: 'charbtn', style: style.charbtn, value: 5, onMouseOver: this.toggleCharBtnHover, onMouseOut: this.toggleCharBtnHover },
 	            ' Icy Dagger '
 	          ),
 	          _react2.default.createElement(
 	            'button',
-	            { className: 'charbtn', style: style.charbtn },
+	            { className: 'charbtn', style: style.charbtn, value: 6, onMouseOver: this.toggleCharBtnHover, onMouseOut: this.toggleCharBtnHover },
 	            ' Alkoze '
 	          ),
 	          _react2.default.createElement(
 	            'button',
-	            { className: 'charbtn', style: style.charbtn },
-	            ' Wylin '
-	          ),
-	          _react2.default.createElement(
-	            'button',
-	            { className: 'charbtn', style: style.charbtn },
-	            ' Wylin '
-	          ),
-	          _react2.default.createElement(
-	            'button',
-	            { className: 'charbtn', style: style.charbtn },
-	            ' Wylin '
-	          ),
-	          _react2.default.createElement(
-	            'button',
-	            { className: 'charbtn', style: style.charbtn },
-	            ' Wylin '
-	          ),
-	          _react2.default.createElement(
-	            'button',
-	            { className: 'charbtn', style: style.charbtn },
-	            ' Wylin '
-	          ),
-	          _react2.default.createElement(
-	            'button',
-	            { className: 'charbtn', style: style.charbtn },
-	            ' Wylin '
-	          ),
-	          _react2.default.createElement(
-	            'button',
-	            { className: 'charbtn', style: style.charbtn },
+	            { className: 'charbtn', style: style.charbtn, value: 7, onMouseOver: this.toggleCharBtnHover, onMouseOut: this.toggleCharBtnHover },
 	            ' Wylin '
 	          )
 	        ),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'charpickercontrols', style: style.charpickercontrols },
-	          _react2.default.createElement('img', { src: '/img/plus-52.png', alt: 'New Character', style: style.newcharbtn })
+	          _react2.default.createElement('img', { src: '/img/plus-52.png',
+	            alt: 'New Character',
+	            style: _lodash2.default.merge({}, style.newcharbtn, { backgroundColor: this.state.isNewCharHover ? '#F1F1F1' : 'transparent' }),
+	            onMouseOver: this.toggleNewCharHover,
+	            onMouseOut: this.toggleNewCharHover })
 	        )
 	      );
 	    } //render
 
+	    /*CUSTOM EVENT HANDLERS*/
+
+	  }, {
+	    key: 'toggleCharBtnHover',
+	    value: function toggleCharBtnHover(e) {
+	      this.setState({
+	        isCharBtnHover: e.type === 'mouseover' ? e.target.value : null
+	      });
+	    }
+	  }, {
+	    key: 'toggleNewCharHover',
+	    value: function toggleNewCharHover(e) {
+	      console.log('toggle');
+	      this.setState({
+	        isNewCharHover: e.type === 'mouseover'
+	      });
+	    }
 	  }]);
 
 	  return CharacterPicker;
@@ -48568,6 +48564,7 @@
 	      newcharbtn: {
 	        width: '32px',
 	        height: '32px',
+	        borderRadius: '3px',
 	        cursor: 'pointer'
 	      }
 	    }; //styles

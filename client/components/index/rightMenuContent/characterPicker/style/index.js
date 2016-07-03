@@ -29,6 +29,7 @@ export default new class Style {
       newcharbtn:{
         width: '32px',
         height: '32px',
+        borderRadius: '3px',
         cursor: 'pointer'
       }
     }//styles
