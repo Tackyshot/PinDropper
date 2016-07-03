@@ -13,7 +13,8 @@ import {
         Skills,
         Spells,
         Stats,
-        Weapons
+        Weapons,
+        CharacterPicker
       }                 from './rightMenuContent/';
 
 export default class Index extends React.Component{
@@ -35,6 +36,7 @@ export default class Index extends React.Component{
       <Corkboard>
         <CorkboardMenu>
           <CorkboardMenuItem menuIcon='viking-helmet-48.png' >
+            <CharacterPicker />
             <Stats />
           </CorkboardMenuItem>
 
