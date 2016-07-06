@@ -5,7 +5,7 @@ import request  from 'tools/request';
 class AcActions {
 
   get(callback){
-    const route   = `/api/${campaign}/${character}/ac`;
+    const route   = `/api/campaigns/${campaign}/characters/${character}/ac`;
 
     return (dispatch)=>{
       request.get(route, (err, data)=>{
@@ -20,7 +20,7 @@ class AcActions {
   put(options, callback){
     const params  = options.params;
     const data    = options.data;
-    const route   = `/api/${campaign}/${character}/ac`;
+    const route   = `/api/campaigns/${campaign}/characters/${character}/ac`;
 
     return (dispatch)=>{
       request.put(route, data, (err, data)=>{

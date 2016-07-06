@@ -30,6 +30,10 @@ export default class CharacterPicker extends React.Component{
         <div className="charbtnarea" style={style.charbtnarea} >
           {/*MAP THROUGH CHARACTER LIST value is the character id*/}
           <button className="charbtn" style={style.charbtn} value={1} onMouseOver={this.toggleCharBtnHover} onMouseOut={this.toggleCharBtnHover}  > William Caffery </button>
+
+
+
+
           <button className="charbtn" style={style.charbtn} value={2} onMouseOver={this.toggleCharBtnHover} onMouseOut={this.toggleCharBtnHover}  > Jarvis </button>
           <button className="charbtn" style={style.charbtn} value={3} onMouseOver={this.toggleCharBtnHover} onMouseOut={this.toggleCharBtnHover}  > Glen </button>
           <button className="charbtn" style={style.charbtn} value={4} onMouseOver={this.toggleCharBtnHover} onMouseOut={this.toggleCharBtnHover}  > Varro </button>
