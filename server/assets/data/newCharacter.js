@@ -167,7 +167,22 @@ module.exports = {
       price: 0,
       qty: 0,
       location: '',
-      description: ''
+      description: '',
+      equipped: false,
+      modifiers: {
+        skills:[
+          {
+            skill: '',
+            mod: 0
+          }
+        ],
+        stats: [
+          {
+            stat: '',
+            mod: 0
+          }
+        ]
+      }
     }
   ],
   currency:[
@@ -263,16 +278,33 @@ module.exports = {
       }
     ], //0 lvl
   }, //spells
-  notes:{
-    general:'',
-    private: '',
-    custom:[
-      {
-        title: '',
-        description:''
-      }
-    ]
-  },
+  notes:[
+    {
+      type: 'prebaked',
+      notes:[
+        {
+          title: 'general',
+          private: false,
+          description: ''
+        },
+        {
+          title: 'private',
+          private: true,
+          description: ''
+        }
+      ]
+    },
+    {
+      type: 'custom',
+      notes: [
+        {
+          title: 'custom title',
+          private: false,
+          description: 'custom description'
+        }
+      ]
+    }
+  ],
   contacts: [
     {
       name: '',

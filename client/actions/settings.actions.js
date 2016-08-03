@@ -4,20 +4,19 @@ import request  from 'tools/request';
 
 class AcActions {
 
-  get(callback){
-    const route   = `/api/${campaign}/${character}/ac`;
+  set(key, value, callback){
 
     return (dispatch)=>{
-      request.get(route, (err, data)=>{
-        if(!err)dispatch(data);
-        else console.error(`AcActions .get() Err: ${err}`);
+        dispatch({
+          key: key,
+          value: value
+        });
+        callback();
+      }
 
-        callback(err);
-      });
-    }
   }//load
 
-  put(options, callback){
+  /*put(options, callback){
     const params  = options.params;
     const data    = options.data;
     const route   = '/api/todos/' + params.todoId;
@@ -30,7 +29,7 @@ class AcActions {
         callback(err);
       });
     }
-  }//put
+  }//put*/
 
 }
 

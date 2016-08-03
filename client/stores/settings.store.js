@@ -5,8 +5,8 @@ import _            from 'lodash';
 class SettingsStore {
   constructor(){
     this.bindListeners({
-      set: SettingsActions.get,
-      put: SettingsActions.put,
+      set: SettingsActions.set,
+      //put: SettingsActions.put,
     });
 
     this.state = {
@@ -16,17 +16,30 @@ class SettingsStore {
     };
   }//constructor
 
-  set(settings){
-    if(settings !== null){
-      this.setState(settings);
-    }
+  set(setting){
+    let nSettings = _.clone(this.state, true);
+
+    nSettings[setting.key] = setting.value;
+    this.setState(nSettings);
   }//set
 
-  put(settings){
+  /*put(settings){
     if(settings !== null) {
       this.setState(settings);
     }
-  }//put
+  }//put*/
+
+
+  /*GETTER FUNCTIONS*/
+  observe(callback){
+    let observeList = [
+      'add',
+      'update',
+      'delete'
+    ];
+
+    Object.observe(this.state, callback, observeList)
+  }
 
 }
 

@@ -46,6 +46,22 @@ class InventoryActions {
       });
     }
   }
+
+  del(options, callback){
+    const params  = options.params;
+    const data    = options.data;
+    const route   = `/api/campaigns/${params.campaignId}/characters/${characterId}/inventory/${invItemId}`; //use campaign settings store instead?
+
+    return (dispatch)=>{
+      request.del(route, data, (err, data)=>{
+        if(!err)dispatch(data);
+        else console.error(`InventoryActions .put() Err: ${err}`);
+
+        callback(err);
+      });
+    }
+  }//put
+
 }
 
 export default Alt.createActions(InventoryActions);

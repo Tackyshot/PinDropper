@@ -30,7 +30,10 @@ module.exports = {
           connectdb.connect((done)=> {
             Account.findOne({username: payload.username}, (err, account)=> {
               if (err) console.log('LOGIN ERR:', err);
-              if (account === null) return res(fs.readFileSync(dir)).type('text/html');
+              if (account === null) {
+                done();
+                return res(fs.readFileSync(dir)).type('text/html');
+              }
 
               Bcrypt.compare(payload.password, account.password, (isSamePw)=>{
                 if(isSamePw){
