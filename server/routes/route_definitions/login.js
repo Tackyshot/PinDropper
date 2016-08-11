@@ -29,8 +29,9 @@ module.exports = {
 
           connectdb.connect((done)=> {
             Account.findOne({username: payload.username}, (err, account)=> {
-              if (err) console.log('LOGIN ERR:', err);
+              if (err) done(), console.log('LOGIN ERR:', err);
               if (account === null) {
+                console.log("Invalid login: Account not found");
                 done();
                 return res(fs.readFileSync(dir)).type('text/html');
               }
@@ -38,16 +39,21 @@ module.exports = {
               Bcrypt.compare(payload.password, account.password, (isSamePw)=>{
                 if(isSamePw){
                   req.server.app.cache.set(String(account._id), { account: account }, 0, (err) => {
-                    if (err) return res(err);
+                    if (err) {
+                      done();
+                      return res(err);
+                    }
 
+                    done();
                     req.cookieAuth.set({ sid: account._id });
                     return res.redirect('/');
                   });
                 }
                 else{
+                  console.log("Invalid login: Incorrect credentials");
+                  done();
                   return res(fs.readFileSync(dir)).type('text/html');
                 }
-                done();
               }); //bcrypt compare
             }); //account find
           }); //dbconnect

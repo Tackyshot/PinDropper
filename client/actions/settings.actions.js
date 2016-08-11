@@ -2,7 +2,7 @@
 import Alt      from '../alt.jsx';
 import request  from 'tools/request';
 
-class AcActions {
+class SettingsActions {
 
   set(key, value, callback){
 
@@ -33,4 +33,4 @@ class AcActions {
 
 }
 
-export default Alt.createActions(AcActions);
+export default Alt.createActions(SettingsActions);

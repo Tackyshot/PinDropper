@@ -6,9 +6,11 @@ class CampaignActions {
 
   get(callback){
     const route   = `/api/campaign`;
+console.log("call getter");
 
     return (dispatch)=>{
       request.get(route, (err, data)=>{
+console.log('getter response:', data);
         if(!err)dispatch(data);
         else console.error(`CampaignActions .get() Err: ${err}`);
 

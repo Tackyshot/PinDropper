@@ -5,7 +5,9 @@ export default new class Style {
     this.styles = {
       wrapper:{
         width: '100%',
-        border: '1px solid black'
+        border: '1px solid #CECECE',
+        borderRadius: '5px',
+        boxShadow: '0px 0px 6px #AFAFAF'
       },
       content:{
         width: '100%',
@@ -14,15 +16,16 @@ export default new class Style {
       },
       header: {
         width: '100%',
-        display: 'block'
+        display: 'flex',
+        justifyContent: 'space-between'
       },
       headerTitle:{
         padding: '3%',
         paddingRight: 0,
-        display: 'inline-block'
+        display: 'flex',
+        alignItems: 'center'
       },
       headerButton: {
-        float: 'right',
         padding: '2% 0',
         display: 'inline-block'
       },

@@ -12,8 +12,7 @@ let campaignSchema = Schema({
     default: ''
   },
   dm: {
-    type: String,
-
+    type: String, //account GUID of DM
   }
 });
 

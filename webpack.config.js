@@ -12,7 +12,7 @@ let webpackConfig = {
     alias:{
       actions: `${__dirname}/client/actions`,
       stores: `${__dirname}/client/stores`,
-      tools: `${__dirname}/client/`,
+      tools: `${__dirname}/client/tools`,
       _common: `${__dirname}/client/components/_common`,
       textfield: `${__dirname}/client/components/_common/textField/`,
       theme: `${__dirname}/client/components/_common/_theme/`,
