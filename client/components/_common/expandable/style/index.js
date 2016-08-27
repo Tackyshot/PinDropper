@@ -5,9 +5,9 @@ export default new class Style {
     this.styles = {
       wrapper:{
         width: '100%',
-        border: '1px solid #CECECE',
+        border: '1px solid #E8E8E8',
         borderRadius: '5px',
-        boxShadow: '0px 0px 6px #AFAFAF'
+        boxShadow: '0px 0px 6px #E8E8E8'
       },
       content:{
         width: '100%',

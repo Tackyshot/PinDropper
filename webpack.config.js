@@ -26,7 +26,8 @@ let webpackConfig = {
       {
         test: /(\.jsx$|\.js$)/,
         exclude: /(node_modules|bower_components)/,
-        loaders: ['babel']
+        loaders: ['babel'],
+        plugins: ['transform-decorators-legacy'],
       },
       {
         test: /\.css$/,
