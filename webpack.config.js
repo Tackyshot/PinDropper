@@ -12,6 +12,7 @@ let webpackConfig = {
     alias:{
       actions: `${__dirname}/client/actions`,
       stores: `${__dirname}/client/stores`,
+      _stores: `${__dirname}/client/mobx_stores`,
       tools: `${__dirname}/client/tools`,
       _common: `${__dirname}/client/components/_common`,
       textfield: `${__dirname}/client/components/_common/textField/`,
