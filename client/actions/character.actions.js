@@ -4,7 +4,7 @@ import request  from 'tools/request';
 
 class CharacterActions {
 
-  get(callback){
+  getCharacter(callback){
     const route   = `/api/campaigns/${campaign}/characters/${character}`;
 
     return (dispatch)=>{
@@ -17,7 +17,7 @@ class CharacterActions {
     }
   }//load
 
-  put(options, callback){
+  updateCharacter(options, callback){
     const params  = options.params;
     const data    = options.data;
     const route   = `/api/campaigns/${campaign}/characters/${character}`;
@@ -32,7 +32,7 @@ class CharacterActions {
     }
   }//put
 
-  post(options, callback){
+  newCharacter(options, callback){
     const params  = options.params;
     const data    = options.data;
     const route   = `/api/campaigns/${campaign}/characters/`;
@@ -45,6 +45,11 @@ class CharacterActions {
         callback(err);
       });
     }
+  }
+
+  static makeRequest(dispatch){
+
+
   }
 
 }

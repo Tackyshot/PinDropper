@@ -1,5 +1,5 @@
 import Alt          from '../alt.jsx';
-import AcActions    from 'actions/ac.actions.js';
+import SettingsActions    from 'actions/ac.actions.js';
 import _            from 'lodash';
 
 class SettingsStore {
@@ -29,17 +29,10 @@ class SettingsStore {
     }
   }//put*/
 
+  onGetCampaigns(campaigns){
 
-  /*GETTER FUNCTIONS*/
-  observe(callback){
-    let observeList = [
-      'add',
-      'update',
-      'delete'
-    ];
-
-    Object.observe(this.state, callback, observeList)
   }
+
 
 }
 
