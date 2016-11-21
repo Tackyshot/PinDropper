@@ -25,7 +25,7 @@ module.exports  = {
             });
           }
           else{
-            Campaign.find(searchBy, (err, campaigns)=>{
+            Campaign.find({_id: {$in: req.auth.credentials.campaigns}}, (err, campaigns)=>{
               if(err) console.log(err);
 
               done();

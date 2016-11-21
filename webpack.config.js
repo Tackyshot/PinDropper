@@ -10,14 +10,15 @@ let webpackConfig = {
   },
   resolve:{
     alias:{
+      common: `${__dirname}/client/components/_common`,
+      tools: `${__dirname}/client/components/_tools`,
+      theme: `${__dirname}/client/components/_common/_theme/theme.jsx`,
+      style: './style/style.js',
       actions: `${__dirname}/client/actions`,
       stores: `${__dirname}/client/stores`,
-      tools: `${__dirname}/client/`,
-      _common: `${__dirname}/client/components/_common`,
+      svg: `${__dirname}/client/components/_common/svg`,
       textfield: `${__dirname}/client/components/_common/textField/`,
-      theme: `${__dirname}/client/components/_common/_theme/`,
-      corkboard: `${__dirname}/client/components/_common/corkboard/`,
-      style: './style/'
+      corkboard: `${__dirname}/client/components/_common/corkboard/`
     },
     extensions: ["", ".webpack.js", ".web.js", ".js", '.jsx']
   },

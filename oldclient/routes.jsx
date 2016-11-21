@@ -3,8 +3,8 @@ import React                                       from 'react';
 import {Router, Route, IndexRoute, browserHistory} from 'react-router';
 
 //components
-import Base from './components/base.jsx';
-import PinDropper from './components/pindropper/pindropper.jsx';
+import Base         from './components/base.jsx';
+import Index        from './components/index/';
 
 export default class Routes extends React.Component {
 
@@ -12,18 +12,11 @@ export default class Routes extends React.Component {
     return (
       <Router history={browserHistory}>
         <Route path="/" component={Base}>
-          <IndexRoute component={PinDropper} />
+          <IndexRoute component={Index} />
         </Route>
       </Router>
     )
   }
 
-  handleOnEnter(){
-
-  }
-
-  static checkLoggedIn(){
-
-  }
-
 }//Routes();
+

@@ -1,39 +1,33 @@
-import Alt          from '../alt.jsx';
-import SettingsActions    from 'actions/ac.actions.js';
-import _            from 'lodash';
+import Alt from '../alt.jsx';
+import SettingsActions from 'actions/settings.actions.js';
 
-class SettingsStore {
+class SettingsStore{
   constructor(){
-    this.bindListeners({
-      set: SettingsActions.set,
-      //put: SettingsActions.put,
-    });
+    this.bindActions(SettingsActions);
 
     this.state = {
-      account: '', //account id
-      campaign: null, //campaign id,
-      character: null //character id
-    };
-  }//constructor
-
-  set(setting){
-    let nSettings = _.clone(this.state, true);
-
-    nSettings[setting.key] = setting.value;
-    this.setState(nSettings);
-  }//set
-
-  /*put(settings){
-    if(settings !== null) {
-      this.setState(settings);
+      account: null,
+      campaign: null,
+      character: null
     }
-  }//put*/
-
-  onGetCampaigns(campaigns){
-
   }
 
+  onNewSettings(data){
+    this.constructor.setSetting(data);
+  }
 
+  onUpdateSetting(data){
+    this.constructor.setSetting(data);
+  }
+
+  static setSetting(data){
+    let key = data.key;
+    let val = data.value;
+    let obj = {};
+
+    obj[key] = val;
+    this.setState(obj);
+  }
 }
 
 export default Alt.createStore(SettingsStore);
