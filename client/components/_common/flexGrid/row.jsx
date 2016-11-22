@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Style from 'styles';
+import Style from 'style';
 
 export default class Row extends Component{
   constructor(props){

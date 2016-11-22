@@ -12,7 +12,7 @@ export default new class Style extends Theme {
         left: '10px',
         bottom: '10px',
         borderRadius: '50%',
-        border: '2px solid #7A90FF',
+        border: '2px solid #607D8B',
         backgroundColor: '#DDDDDD',
         zIndex: "11",
         padding: '5px',
@@ -22,7 +22,13 @@ export default new class Style extends Theme {
         },
         ":focus":{
           outline: 0
+        },
+        ":active":{
+          backgroundColor: '#8F8F8F'
         }
+      },
+      campaignTile: {
+        width: '150px'
       }
     });
   }

@@ -10,6 +10,8 @@ export default class PinDropper extends Component{
     this.state = {
       settings: null
     }
+
+    this.handleSettings = this.handleSettings.bind(this);
   }
 
   componentWillMount(){
@@ -25,14 +27,14 @@ export default class PinDropper extends Component{
 
     return(
       <div>
-        <AccountManager isOpen={false} settings={this.props.settings} />
+        <AccountManager isOpen={false} settings={this.state.settings} />
       </div>
     )
   }
 
-  handleSettings(){
+  handleSettings(settings){
     this.setState({
-      settings: SettingsStore.getState()
+      settings: settings
     });
   }
 }

@@ -13,14 +13,14 @@ class SettingsStore{
   }
 
   onNewSettings(data){
-    this.constructor.setSetting(data);
+    this.setSetting(data);
   }
 
   onUpdateSetting(data){
-    this.constructor.setSetting(data);
+    this.setSetting(data);
   }
 
-  static setSetting(data){
+  setSetting(data){
     let key = data.key;
     let val = data.value;
     let obj = {};

@@ -5,11 +5,13 @@ export default class Theme{
     let gridType = this.constructor.gridType();
     let gridPos = this.constructor.gridPos();
     let gridItems = this.constructor.gridItems();
+    let elements = this.constructor.elements(this.colors());
 
     this.themeStyles = StyleSheet.create({
       ...gridType,
       ...gridPos,
-      ...gridItems
+      ...gridItems,
+      ...elements
     });
   };
 
@@ -133,6 +135,31 @@ export default class Theme{
     }
   };
 
+  static elements(colors){
+
+    return {
+      'buttonPrimary':{
+        padding: '10px',
+        fontSize: '16px',
+        borderRadius: '5px',
+        border: 'none',
+        color: 'white',
+        backgroundColor: colors.btn.primary,
+        ":hover":{
+          cursor: 'pointer',
+          boxShadow: 'inset 0px 0px 50px 0px rgba(0,0,0,0.1)'
+        },
+        ":focus":{
+          outline: 0
+        },
+        ":active":{
+          boxShadow: 'inset 0px 2px 5px 1px #308AAE'
+        }
+      }
+
+    }
+  }
+
   static queries (){
     return {
       xs: '@media (min-width: 480px)',
@@ -144,15 +171,28 @@ export default class Theme{
   };
 
   static color () {
+
     return {
-      primary:   '#1D2731',
-      secondary: '#0B3C5D',
-      contrast:  '#FCEBB6',
-      accent:    "#F07818" /*'#328CC1'*/,
-      highlight: '#D98310',
-      error: '',
-      success: '',
-      warning: ''
+      base: {
+        primary:   '#1D2731',
+        secondary: '#0B3C5D',
+        contrast:  '#FCEBB6',
+        accent:    "#F07818" /*'#328CC1'*/,
+        highlight: '#D98310',
+        error: '',
+        success: '',
+        warning: ''
+      },
+      btn: {
+        primary:   '#66AFEE',
+        secondary: '#0B3C5D',
+        contrast:  '#FCEBB6',
+        accent:    "#F07818" /*'#328CC1'*/,
+        highlight: '#D98310',
+        error: '',
+        success: '',
+        warning: ''
+      }
     }
   }; //static color();
 }

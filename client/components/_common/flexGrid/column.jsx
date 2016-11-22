@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Style from 'styles';
+import Style from 'style';
 
 export default class Column extends Component{
   constructor(props){
@@ -10,7 +10,7 @@ export default class Column extends Component{
     let theme = Style.theme();
 
     return(
-      <div className={Style.css(theme.column)} >
+      <div className={Style.css(theme.column, this.props.style)} >
         {this.props.children}
       </div>
     )

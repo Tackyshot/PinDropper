@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 
-import CharacterPicker from './characterPicker.jsx';
 import CampaignPicker from './campaignPicker.jsx';
 
 export default class ManagerContent extends Component{

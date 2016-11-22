@@ -1,6 +1,8 @@
 "use strict";
 import React, {Component} from 'react';
+import {Row} from 'common/flexGrid/flexGrid.jsx';
 
+import CampaignTile from './campaignTile.jsx';
 import CampaignsActions from 'actions/campaigns.actions.js';
 import CampaignsStore from 'stores/campaigns.store.js';
 
@@ -10,7 +12,7 @@ export default class CampaignPicker extends Component{
 
     this.state = {
       campaigns: null
-    }
+    };
 
     this.campaignsStoreListener = this.campaignsStoreListener.bind(this);
   }
@@ -26,18 +28,15 @@ export default class CampaignPicker extends Component{
 
   render(){
     return (
-      <div>
+      <Row>
         {this.state.campaigns === null ? null : this.state.campaigns.map((campaign)=>{
-          return (
-            <p>{campaign.name}</p>
-          )
+          return (<CampaignTile key={campaign._id} campaign={campaign} />);
         })}
-      </div>
+      </Row>
     )
   }
 
-  campaignsStoreListener(testvar){
-    console.log("TEST VAR:", testvar);
-    this.setState(CampaignsStore.getState());
+  campaignsStoreListener(campaigns){
+    this.setState(campaigns);
   }
 }

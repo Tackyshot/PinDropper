@@ -18,6 +18,14 @@ export default class AccountManager extends Component{
     this.toggleManager = this.toggleManager.bind(this);
   }
 
+  componentWillReceiveProps(nProps){
+    if(nProps !== this.props){
+      this.setState({
+        modalOpen: nProps.settings == null || nProps.settings.campaign === null
+      });
+    }
+  }
+
   render(){
     let style = Style.styles();
     let theme = Style.theme();
