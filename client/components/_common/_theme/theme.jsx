@@ -7,12 +7,23 @@ export default class Theme{
     let gridItems = this.constructor.gridItems();
     let elements = this.constructor.elements(this.colors());
 
+    //todo: implement stores and actions for resize triggers
+    window.addEventListener('resize', (e)=>{
+      this.window.x = e.target.innerWidth;
+      this.window.y = e.target.innerHeight;
+    });
+
     this.themeStyles = StyleSheet.create({
       ...gridType,
       ...gridPos,
       ...gridItems,
       ...elements
     });
+
+    this.window = {
+      x: window.innerWidth,
+      y: window.innerHeight
+    };
   };
 
   theme(){
@@ -26,6 +37,10 @@ export default class Theme{
   colors(){
     return this.constructor.color();
   };
+
+  screensize(){
+    return this.window;
+  }
 
   create(styles){
     return StyleSheet.create(styles);
@@ -60,36 +75,36 @@ export default class Theme{
 
     return {
       //Horizontal ROW Justification
-      'gridLeft':{
+      'justify-flex-start':{
         justifyContent: 'flex-start'
       },
-      'gridCenter':{
+      'justify-center':{
         justifyContent: 'center'
       },
-      'gridRight':{
+      'justify-flex-end':{
         justifyContent: 'flex-end'
       },
-      'gridSpaceBetween':{
+      'justify-space-between':{
         justifyContent: 'space-between'
       },
-      'gridSpaceAround':{
+      'justify-space-around':{
         justifyContent: 'space-around'
       },
 
       //Vertical align items
-      'gridAlignTop':{
+      'alignItems-flex-start':{
         alignItems: 'flex-start',
       },
-      'gridAlignBottom':{
+      'alignItems-flex-end':{
         alignItems: 'flex-end'
       },
-      'gridAlignCenter':{
+      'alignItems-center':{
         alignItems: 'center'
       },
-      'gridAlignStretch':{
+      'alignItems-stretch':{
         alignItems: 'stretch'
       },
-      'gridAlignBaseline': {
+      'alignItems-baseline': {
         alignItems: 'baseline'
       },
 

@@ -3,20 +3,18 @@ import Theme from 'theme';
 export default new class Style extends Theme{
   constructor(){
     super();
-    this.innerHeight = window.innerHeight;
+    //this.innerHeight = this.screensize().y; //window.innerHeight;
 
     this.style = this.create({
       modalBackground: {
         position: 'absolute',
         width: '100%',
-        height: `${this.innerHeight}px`,
         backgroundColor: 'rgba(0,0,0,.5)',
         zIndex: '10'
       },
       modal: {
         position: 'inherit',
         width: '40%',
-        height: `${(this.innerHeight*.4)}px`,
         left: '30%',
         top: '30%',
         padding: '15px',
@@ -29,8 +27,6 @@ export default new class Style extends Theme{
       },
       modalTitle:{
         margin: '0px',
-        fontSize: '18px',
-        fontWeight: 'bold'
       },
       modalCloseBtn: {
         position: 'absolute',

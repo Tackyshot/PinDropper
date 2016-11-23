@@ -21,7 +21,10 @@ export default class ManagerContent extends Component{
     }
     else {
       if(settings.campaign == null) return <CampaignPicker />;
-      else if (settings.character == null) return <CharacterPicker />;
+      else return (
+
+        <CampaignPicker />
+      )
     }
   }
 }

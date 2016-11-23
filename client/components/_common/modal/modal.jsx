@@ -40,14 +40,15 @@ export default class Modal extends React.Component{
   render(){
     console.log('render', this.state.isOpen);
     let style = Style.styles();
+    let screenheight = Style.screensize().y;
 
     if(!this.state.isOpen) return null; //don't render modal if isn't open.
 
     return(
-      <div className={Style.css(style.modalBackground)} >
-        <div className={Style.css(style.modal)} >
+      <div className={Style.css(style.modalBackground)} style={{height: `${screenheight}px`,}} >
+        <div className={Style.css(style.modal)} style={{height: `${(screenheight*.4)}px`}} >
           <div className={Style.css(style.modalTitleArea)} >
-            <p className={Style.css(style.modalTitle)} >{this.props.title}</p>
+            <h2 className={Style.css(style.modalTitle)} >{this.props.title}</h2>
             <img src='/img/delete-52-dark.png' className={Style.css(style.modalCloseBtn)} onClick={this.handleClick}/>
           </div>
           {this.props.children}

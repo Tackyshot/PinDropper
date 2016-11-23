@@ -35,7 +35,7 @@ export default class AccountManager extends Component{
         <button className={Style.css(style.accountManagerBtn)} onClick={this.toggleManager} ><GearSvg width='24' height='24' /></button>
         <Modal title="Test Modal" isOpen={this.state.modalOpen}>
           <p>This is some test content for the modal</p>
-          <ManagerContent />
+          <ManagerContent settings={this.props.settings} />
         </Modal>
       </div>
     )
