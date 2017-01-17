@@ -2,7 +2,9 @@ import React, {Component} from 'react';
 import Style from 'style';
 
 import {Row} from 'common/flexGrid/flexGrid.jsx';
+import {SvgButton} from 'inputs';
 import PlaySvg from 'svg/play.jsx';
+import GearSolidSvg from 'svg/gearSolid.jsx';
 
 import SettingsActions from 'actions/settings.actions.js';
 
@@ -10,21 +12,11 @@ export default class CampaignTile extends Component{
   constructor(props){
     super(props);
 
-    this.state = {
-      hasHover: false
-    };
-
-    this.toggleHover = this.toggleHover.bind(this);
-
   }
+
 
   render(){
     let style = Style.styles();
-    let theme = Style.theme();
-    let color = Style.colors();
-
-    let maxWidth = this.state.hasHover ? style.mwFull : style.mwNone;
-    let display = this.state.hasHover ? style.fullDisplay : style.noDisplay;
 
     let campaign = this.props.campaign;
 
@@ -35,26 +27,23 @@ export default class CampaignTile extends Component{
           <p className={Style.css(style.headerTitle)} >{campaign.name}</p>
         </div>
         <Row style={style.tileFooter} justify="flex-start" >
-          <button className={Style.css(style.playButton, theme.row, /*theme['justify-space-between'],*/ theme['alignItems-center'], maxWidth)}
-                  onMouseOver={this.toggleHover}
-                  onMouseOut={this.toggleHover}
-                  onClick={(e)=>SettingsActions.updateSetting("campaign", campaign._id)}
-          >
-            <div className={Style.css(style.svgWrap)} >
-              <PlaySvg width={36} height={36} color={'white'} />
-            </div>
-            <div className={Style.css(style.playBtnTitle, display)} >
-              Play Campaign
-            </div>
-          </button>
+          <SvgButton
+            onClick={(e)=>SettingsActions.updateSetting("campaign", campaign._id)}
+            label="Play Campaign"
+            width={36}
+            height={36}
+            svgImg={<PlaySvg width={36} height={36} color={'white'} />}
+            />
+          <SvgButton
+            onClick={(e)=>SettingsActions.updateSetting("campaign", campaign._id)}
+            label="Edit Campaign"
+            width={36}
+            height={36}
+            svgImg={<GearSolidSvg width={36} height={36} color={'white'} />}
+            />
         </Row>
       </div>
     )
   }
 
-  toggleHover(e){
-    this.setState({
-      hasHover: !this.state.hasHover
-    });
-  }
 }

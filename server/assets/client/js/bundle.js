@@ -29983,11 +29983,11 @@
 
 	var _campaignTile2 = _interopRequireDefault(_campaignTile);
 
-	var _campaignsActions = __webpack_require__(269);
+	var _campaignsActions = __webpack_require__(272);
 
 	var _campaignsActions2 = _interopRequireDefault(_campaignsActions);
 
-	var _campaignsStore = __webpack_require__(270);
+	var _campaignsStore = __webpack_require__(273);
 
 	var _campaignsStore2 = _interopRequireDefault(_campaignsStore);
 
@@ -30389,9 +30389,15 @@
 
 	var _flexGrid = __webpack_require__(261);
 
-	var _play = __webpack_require__(268);
+	var _inputs = __webpack_require__(268);
+
+	var _play = __webpack_require__(271);
 
 	var _play2 = _interopRequireDefault(_play);
+
+	var _gearSolid = __webpack_require__(274);
+
+	var _gearSolid2 = _interopRequireDefault(_gearSolid);
 
 	var _settingsActions = __webpack_require__(222);
 
@@ -30411,26 +30417,13 @@
 	  function CampaignTile(props) {
 	    _classCallCheck(this, CampaignTile);
 
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(CampaignTile).call(this, props));
-
-	    _this.state = {
-	      hasHover: false
-	    };
-
-	    _this.toggleHover = _this.toggleHover.bind(_this);
-
-	    return _this;
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(CampaignTile).call(this, props));
 	  }
 
 	  _createClass(CampaignTile, [{
 	    key: 'render',
 	    value: function render() {
 	      var style = _style2.default.styles();
-	      var theme = _style2.default.theme();
-	      var color = _style2.default.colors();
-
-	      var maxWidth = this.state.hasHover ? style.mwFull : style.mwNone;
-	      var display = this.state.hasHover ? style.fullDisplay : style.noDisplay;
 
 	      var campaign = this.props.campaign;
 
@@ -30450,35 +30443,26 @@
 	        _react2.default.createElement(
 	          _flexGrid.Row,
 	          { style: style.tileFooter, justify: 'flex-start' },
-	          _react2.default.createElement(
-	            'button',
-	            { className: _style2.default.css(style.playButton, theme.row, /*theme['justify-space-between'],*/theme['alignItems-center'], maxWidth),
-	              onMouseOver: this.toggleHover,
-	              onMouseOut: this.toggleHover,
-	              onClick: function onClick(e) {
-	                return _settingsActions2.default.updateSetting("campaign", campaign._id);
-	              }
+	          _react2.default.createElement(_inputs.SvgButton, {
+	            onClick: function onClick(e) {
+	              return _settingsActions2.default.updateSetting("campaign", campaign._id);
 	            },
-	            _react2.default.createElement(
-	              'div',
-	              { className: _style2.default.css(style.svgWrap) },
-	              _react2.default.createElement(_play2.default, { width: 36, height: 36, color: 'white' })
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: _style2.default.css(style.playBtnTitle, display) },
-	              'Play Campaign'
-	            )
-	          )
+	            label: 'Play Campaign',
+	            width: 36,
+	            height: 36,
+	            svgImg: _react2.default.createElement(_play2.default, { width: 36, height: 36, color: 'white' })
+	          }),
+	          _react2.default.createElement(_inputs.SvgButton, {
+	            onClick: function onClick(e) {
+	              return _settingsActions2.default.updateSetting("campaign", campaign._id);
+	            },
+	            label: 'Edit Campaign',
+	            width: 36,
+	            height: 36,
+	            svgImg: _react2.default.createElement(_gearSolid2.default, { width: 36, height: 36, color: 'white' })
+	          })
 	        )
 	      );
-	    }
-	  }, {
-	    key: 'toggleHover',
-	    value: function toggleHover(e) {
-	      this.setState({
-	        hasHover: !this.state.hasHover
-	      });
 	    }
 	  }]);
 
@@ -30489,6 +30473,227 @@
 
 /***/ },
 /* 268 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.SvgButton = undefined;
+
+	var _svgButton = __webpack_require__(269);
+
+	var _svgButton2 = _interopRequireDefault(_svgButton);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.SvgButton = _svgButton2.default;
+
+/***/ },
+/* 269 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _style = __webpack_require__(270);
+
+	var _style2 = _interopRequireDefault(_style);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var SvgButton = function (_Component) {
+	  _inherits(SvgButton, _Component);
+
+	  function SvgButton(props) {
+	    _classCallCheck(this, SvgButton);
+
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(SvgButton).call(this, props));
+
+	    _this.state = {
+	      hasHover: false
+	    };
+
+	    //rebindings
+	    _this.toggleHover = _this.toggleHover.bind(_this);
+	    return _this;
+	  }
+
+	  _createClass(SvgButton, [{
+	    key: 'render',
+	    value: function render() {
+	      var style = _style2.default.styles();
+	      var theme = _style2.default.theme();
+	      var secondStyle = this.buildSecondaryStyles();
+
+	      var value = typeof this.props.value !== 'undefined' ? this.props.value : null;
+	      var maxWidth = this.state.hasHover ? style.mwFull : secondStyle.mwNone;
+	      var display = this.state.hasHover ? style.fullDisplay : style.noDisplay;
+
+	      return _react2.default.createElement(
+	        'button',
+	        { className: _style2.default.css(style.playButton, secondStyle.playButtonSecondary, theme.row, theme['alignItems-center'], maxWidth),
+	          onMouseOver: this.toggleHover,
+	          onMouseOut: this.toggleHover,
+	          onClick: this.props.onClick,
+	          value: value
+	        },
+	        _react2.default.createElement(
+	          'div',
+	          { className: _style2.default.css(style.svgWrap, secondStyle.svgWrapSecondary) },
+	          this.props.svgImg
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: _style2.default.css(style.playBtnTitle, display) },
+	          this.props.label
+	        )
+	      );
+	    }
+
+	    //custom handlers
+
+	  }, {
+	    key: 'toggleHover',
+	    value: function toggleHover(e) {
+	      this.setState({
+	        hasHover: !this.state.hasHover
+	      });
+	    }
+	  }, {
+	    key: 'buildSecondaryStyles',
+	    value: function buildSecondaryStyles() {
+	      var width = this.props.width;
+	      var height = this.props.height;
+
+	      return _style2.default.create({
+	        playButtonSecondary: {
+	          minWidth: width + 4 + 'px'
+	        },
+	        svgWrapSecondary: {
+	          width: width + 'px',
+	          minWidth: width + 'px',
+	          height: height + 'px',
+	          minHeight: height + 'px'
+	        },
+	        mwNone: {
+	          maxWidth: width + 4 + 'px'
+	        },
+	        playBtnTitleSecondary: {}
+	      });
+	    }
+	  }]);
+
+	  return SvgButton;
+	}(_react.Component);
+
+	exports.default = SvgButton;
+
+/***/ },
+/* 270 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _theme = __webpack_require__(232);
+
+	var _theme2 = _interopRequireDefault(_theme);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	exports.default = new (function (_Theme) {
+	  _inherits(Style, _Theme);
+
+	  function Style() {
+	    _classCallCheck(this, Style);
+
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Style).call(this));
+
+	    _this.style = _this.create({
+	      playButton: {
+	        position: 'relative',
+	        border: '2px solid ' + /*this.colors().btn.primary*/'white',
+	        borderRadius: '5px',
+	        padding: '0px',
+	        backgroundColor: 'transparent', //this.colors().btn.primary,
+	        transition: 'max-width .5s ease',
+	        overflow: 'hidden',
+	        margin: '5px',
+	        ':hover': {
+	          cursor: 'pointer',
+	          backgroundColor: 'rgba(255,255,255,0.2)'
+	        },
+	        ':focus': {
+	          outline: 0
+	        },
+	        ':active': {
+	          backgroundColor: 'rgba(255,255,255,0.5)'
+	        }
+	      },
+	      svgWrap: {
+	        display: 'inline-block'
+	      },
+	      mwFull: {
+	        maxWidth: '100%'
+	      },
+	      playBtnTitle: {
+	        display: 'inline-block',
+	        color: 'white',
+	        overflow: 'hidden',
+	        whiteSpace: 'nowrap',
+	        margin: '0px 10px 0px 0px',
+	        fontWeight: 'bold'
+	      },
+	      noDisplay: {
+	        display: 'none'
+	      },
+	      fullDisplay: {
+	        display: 'inline-block'
+	      }
+	    });
+	    return _this;
+	  }
+
+	  _createClass(Style, [{
+	    key: 'styles',
+	    value: function styles() {
+	      return this.style;
+	    }
+	  }]);
+
+	  return Style;
+	}(_theme2.default))();
+
+/***/ },
+/* 271 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30569,7 +30774,7 @@
 	exports.default = PlaySvg;
 
 /***/ },
-/* 269 */
+/* 272 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30629,7 +30834,7 @@
 	exports.default = _alt2.default.createActions(CampaignsActions);
 
 /***/ },
-/* 270 */
+/* 273 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30644,7 +30849,7 @@
 
 	var _alt2 = _interopRequireDefault(_alt);
 
-	var _campaignsActions = __webpack_require__(269);
+	var _campaignsActions = __webpack_require__(272);
 
 	var _campaignsActions2 = _interopRequireDefault(_campaignsActions);
 
@@ -30691,6 +30896,64 @@
 	}();
 
 	exports.default = _alt2.default.createStore(CampaignsStore);
+
+/***/ },
+/* 274 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var GearSolidSvg = function (_Component) {
+	  _inherits(GearSolidSvg, _Component);
+
+	  function GearSolidSvg(props) {
+	    _classCallCheck(this, GearSolidSvg);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(GearSolidSvg).call(this, props));
+	  }
+
+	  _createClass(GearSolidSvg, [{
+	    key: "render",
+	    value: function render() {
+
+	      return _react2.default.createElement(
+	        "svg",
+	        { version: "1.0",
+	          xmlns: "http://www.w3.org/2000/svg",
+	          x: "0px",
+	          y: "0px",
+	          width: this.props.width + "px",
+	          height: this.props.height + "px",
+	          fill: !!this.props.color ? this.props.color : '#FFFFFF',
+	          viewBox: "0 0 24 24" },
+	        _react2.default.createElement("path", { d: "M19.4,13c0-0.3,0.1-0.7,0.1-1s0-0.7-0.1-1l2.1-1.5c0.2-0.1,0.3-0.4,0.1-0.7l-2-3.5C19.5,5,19.2,4.9,19,5l-2.4,1.1 c-0.5-0.4-1.2-0.8-1.8-1l-0.3-2.6C14.5,2.2,14.3,2,14,2H10C9.7,2,9.5,2.2,9.5,2.5L9.2,5c-0.7,0.3-1.3,0.6-1.8,1L5,5 C4.8,4.9,4.5,5,4.4,5.2l-2,3.5C2.2,9,2.2,9.3,2.5,9.4L4.6,11c0,0.3-0.1,0.7-0.1,1s0,0.7,0.1,1l-2.1,1.5c-0.2,0.1-0.3,0.4-0.1,0.7 l2,3.5C4.5,19,4.8,19.1,5,19l2.4-1.1c0.5,0.4,1.2,0.8,1.8,1l0.3,2.6c0,0.3,0.2,0.5,0.5,0.5H14c0.3,0,0.5-0.2,0.5-0.5l0.3-2.6 c0.7-0.3,1.3-0.6,1.8-1L19,19c0.2,0.1,0.5,0,0.6-0.2l2-3.5c0.1-0.2,0.1-0.5-0.1-0.7L19.4,13z M12,16c-2.2,0-4-1.8-4-4 c0-2.2,1.8-4,4-4s4,1.8,4,4C16,14.2,14.2,16,12,16z"
+	        })
+	      );
+	    }
+	  }]);
+
+	  return GearSolidSvg;
+	}(_react.Component);
+
+	exports.default = GearSolidSvg;
 
 /***/ }
 /******/ ]);

@@ -17,7 +17,7 @@ let webpackConfig = {
       actions: `${__dirname}/client/actions`,
       stores: `${__dirname}/client/stores`,
       svg: `${__dirname}/client/components/_common/svg`,
-      textfield: `${__dirname}/client/components/_common/textField/`,
+      inputs: `${__dirname}/client/components/_common/inputs/inputs.jsx`,
       corkboard: `${__dirname}/client/components/_common/corkboard/`
     },
     extensions: ["", ".webpack.js", ".web.js", ".js", '.jsx']
