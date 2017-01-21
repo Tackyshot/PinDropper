@@ -1,20 +1,21 @@
 "use strict";
-import AppBar   from 'material-ui/lib/app-bar';
-import Style    from './_common/_baseStyle/'
 import React    from 'react';
 
 export default class Base extends React.Component{
   constructor(props, context){
     super(props, context);
-
-    this.state = {}
   }
 
   render(){
-    let style = Style.styles;
-
     return(
-      <div className="baseComponent" style={style.baseComponent} >
+      <div className="baseComponent" style={{
+        padding: "0px",
+        margin: "0px",
+        display: "block",
+        width: "100%",
+        height: "100%",
+        maxHeight: "100%"
+      }} >
         {this.props.children}
       </div>
     )

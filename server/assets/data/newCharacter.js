@@ -114,7 +114,21 @@ module.exports = {
       dmgType: '',
       weight: 0,
       location: '',
-      description: ''
+      description: '',
+      modifiers: {
+        skills:[
+          {
+            skill: '',
+            mod: 0
+          }
+        ],
+        stats: [
+          {
+            stat: '',
+            mod: 0
+          }
+        ]
+      }
     }
   ],
   armor: [
@@ -129,7 +143,21 @@ module.exports = {
       weight: 0,
       equipped: false,
       location: '',
-      description: ''
+      description: '',
+      modifiers: {
+        skills:[
+          {
+            skill: '',
+            mod: 0
+          }
+        ],
+        stats: [
+          {
+            stat: '',
+            mod: 0
+          }
+        ]
+      }
     }
   ],
   inventory: [
@@ -139,31 +167,64 @@ module.exports = {
       price: 0,
       qty: 0,
       location: '',
-      description: ''
+      description: '',
+      equipped: false,
+      modifiers: {
+        skills:[
+          {
+            skill: '',
+            mod: 0
+          }
+        ],
+        stats: [
+          {
+            stat: '',
+            mod: 0
+          }
+        ]
+      }
     }
   ],
-  currency:{
-    p:{
-      value: 0,
-      mod: 100
-    },
-    g:{
+  currency:[
+    {
+      name: 'platinum',
       value: 0,
       mod: 10
     },
-    s: {
+    {
+      name: 'gold',
       value: 0,
       mod: 1
     },
-    c:{
+    {
+      name: 'silver',
       value: 0,
       mod: 0.1
+    },
+    {
+      name: 'copper',
+      value: 0,
+      mod: 0.01
     }
-  },
+  ],
   feats: [
     {
       name: '',
-      description: ''
+      description: '',
+      modifiers: {
+        skills:[
+          {
+            skill: '',
+            mod: 0
+          }
+        ],
+        stats: [
+          {
+            stat: '',
+            mod: 0
+          }
+        ]
+      }
     }
   ],
   skills: {
@@ -185,6 +246,7 @@ module.exports = {
       {
         name:'',
         prepared: 0,
+        preparedAt: 0,
         components: {
           verbal: false,
           somatic: false,
@@ -196,8 +258,8 @@ module.exports = {
         range: '',
         target: '',
         duration: '',
-        save: '',
-        resistace: '',
+        saveType: '',
+        resistence: '',
         description: '',
         modifiers: {
           skills:[
@@ -216,16 +278,33 @@ module.exports = {
       }
     ], //0 lvl
   }, //spells
-  notes:{
-    general:'',
-    private: '',
-    custom:[
-      {
-        title: '',
-        description:''
-      }
-    ]
-  },
+  notes:[
+    {
+      type: 'prebaked',
+      notes:[
+        {
+          title: 'general',
+          private: false,
+          description: ''
+        },
+        {
+          title: 'private',
+          private: true,
+          description: ''
+        }
+      ]
+    },
+    {
+      type: 'custom',
+      notes: [
+        {
+          title: 'custom title',
+          private: false,
+          description: 'custom description'
+        }
+      ]
+    }
+  ],
   contacts: [
     {
       name: '',
@@ -240,6 +319,5 @@ module.exports = {
       maxWeight: 0
     }
   ]
-
 
 }

@@ -195,8 +195,8 @@ let characterSchema = Schema({
         range: String,
         target: String,
         duration: String,
-        save: String,
-        resistace: String,
+        saveType: String,
+        resistence: String,
         description: String,
         modifiers: {
           skills:[
@@ -229,7 +229,7 @@ let characterSchema = Schema({
         range: String,
         target: String,
         duration: String,
-        save: String,
+        saveType: String,
         resistace: String,
         description: String,
         modifiers: {
@@ -263,7 +263,7 @@ let characterSchema = Schema({
         range: String,
         target: String,
         duration: String,
-        save: String,
+        saveType: String,
         resistace: String,
         description: String,
         modifiers: {
@@ -297,7 +297,7 @@ let characterSchema = Schema({
         range: String,
         target: String,
         duration: String,
-        save: String,
+        saveType: String,
         resistace: String,
         description: String,
         modifiers: {
@@ -331,7 +331,7 @@ let characterSchema = Schema({
         range: String,
         target: String,
         duration: String,
-        save: String,
+        saveType: String,
         resistace: String,
         description: String,
         modifiers: {
@@ -365,7 +365,7 @@ let characterSchema = Schema({
         range: String,
         target: String,
         duration: String,
-        save: String,
+        saveType: String,
         resistace: String,
         description: String,
         modifiers: {
@@ -399,7 +399,7 @@ let characterSchema = Schema({
         range: String,
         target: String,
         duration: String,
-        save: String,
+        saveType: String,
         resistace: String,
         description: String,
         modifiers: {
@@ -433,7 +433,7 @@ let characterSchema = Schema({
         range: String,
         target: String,
         duration: String,
-        save: String,
+        saveType: String,
         resistace: String,
         description: String,
         modifiers: {
@@ -467,7 +467,7 @@ let characterSchema = Schema({
         range: String,
         target: String,
         duration: String,
-        save: String,
+        saveType: String,
         resistace: String,
         description: String,
         modifiers: {
@@ -501,7 +501,7 @@ let characterSchema = Schema({
         range: String,
         target: String,
         duration: String,
-        save: String,
+        saveType: String,
         resistace: String,
         description: String,
         modifiers: {
