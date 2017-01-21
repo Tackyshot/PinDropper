@@ -4,13 +4,28 @@ const Character = require('../../assets/models/character');
 const CharData  = require('../../assets/data/newCharacter');
 
 module.exports  = {
-  method: ['POST'],
-  path: "/api/{campaignId}/newchar",
+  method: ['GET', 'POST'],
+  path: "/api/{campaignId}/characters",
   handler: function (req, res) {
     const connectdb = new ConnectDb();
+    let searchBy = {
+      campaign: req.params.campaignId,
+      account: req.auth.credentials._id
+    };
 
     connectdb.connect((done)=> {
       switch (req.method) {
+        case "get":
+          Character.find(searchBy, (err, characters)=>{
+            if(err) console.log("get characters error", err);
+
+            console.log("CHARACTERS!", characters);
+            res({characters: characters})
+              .type("application/json")
+
+            done();
+          });
+        break;
         case "post":
           CharData.account = req.auth.credentials._id;
           CharData.campaign = req.params.campaignId;

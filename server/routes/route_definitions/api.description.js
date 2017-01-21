@@ -4,7 +4,7 @@ const Character = require('../../assets/models/character');
 
 module.exports  = {
   method: ['GET', 'POST', 'PUT', 'DELETE'],
-  path: "/api/{campaignId}/{charId}/character",
+  path: "/api/{campaignId}/{charId}/description ",
   handler: function (req, res){
     const connectdb = new ConnectDb();
     let searchBy = {

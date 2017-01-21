@@ -27412,12 +27412,7 @@
 	        ),
 	        _react2.default.createElement(
 	          _modal2.default,
-	          { title: 'Test Modal', isOpen: this.state.modalOpen },
-	          _react2.default.createElement(
-	            'p',
-	            null,
-	            'This is some test content for the modal'
-	          ),
+	          { title: 'Campaign Picker', isOpen: this.state.modalOpen },
 	          _react2.default.createElement(_managerContent2.default, { settings: this.props.settings })
 	        )
 	      );
