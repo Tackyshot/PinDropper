@@ -11,6 +11,10 @@ let campaignSchema = Schema({
     type: String,
     default: ''
   },
+  join_code:{
+    type: String,
+    default: ''
+  },
   dm: {
     type: String,
 

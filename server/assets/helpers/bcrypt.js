@@ -9,21 +9,33 @@ class Bcrypt {
 
   hash(tohash, callback){
     let bcrypt = this['bcrypt'];
-    bcrypt.genSalt(this['saltRounds'], (err, salt)=>{
-      if(err) console.log('Bcrypt Salt Error:', err);
-      bcrypt.hash(tohash, salt, (err, hash)=>{
-        if(err) console.log('Bcrypt Hash Error:', err);
-        return callback(hash);
+
+    if(callback){
+      bcrypt.genSalt(this['saltRounds'], (err, salt)=>{
+        if(err) console.log('Bcrypt Salt Error:', err);
+        bcrypt.hash(tohash, salt, (err, hash)=>{
+          if(err) console.log('Bcrypt Hash Error:', err);
+          return callback(hash);
+        })
       })
-    })
+    }
+    else{
+      return bcrypt.hashSync(tohash, bcrypt.genSaltSync(this['saltRounds']));
+    }
+
   }
 
   compare(passwd, hash, callback){
     let bcrypt = this['bcrypt'];
-    bcrypt.compare(passwd, hash, (err, result)=>{
-      if(err) console.log('Bcrypt Compare Error:', err);
-      return callback(result);
-    });
+    if(callback){
+      bcrypt.compare(passwd, hash, (err, result)=>{
+        if(err) console.log('Bcrypt Compare Error:', err);
+        return callback(result);
+      });
+    }
+    else{
+      return bcrypt.compareSync(passwd, hash);
+    }
   }
 }
 

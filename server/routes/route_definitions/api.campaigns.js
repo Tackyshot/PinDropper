@@ -1,6 +1,7 @@
 "use strict";
 const ConnectDb = require('../../assets/helpers/connectdb');
 const Campaign  = require('../../assets/models/campaign');
+const Account   = require('../../assets/models/account');
 
 module.exports  = {
   method: ['GET', 'PUT'],
@@ -11,6 +12,8 @@ module.exports  = {
       account: req.auth.credentials._id
     };
 
+    //todo: change campaign to hold array of accounts attached to it
+
     connectdb.connect((done)=>{
       switch(req.method){
 
@@ -20,13 +23,16 @@ module.exports  = {
             Campaign.findOne(searchBy, (err, campaign)=>{
               if(err) console.log(err);
 
+
               done();
               res(campaign).type("application/json");
             });
           }
           else{
-            Campaign.find({_id: {$in: req.auth.credentials.campaigns}}, (err, campaigns)=>{
+            Campaign.find({_users: {$in: req.auth.credentials.campaigns}}, (err, campaigns)=>{
               if(err) console.log(err);
+
+              console.log('get campaigns:', campaigns, req.auth.credentials);
 
               done();
               res(campaigns).type("application/json");
@@ -37,9 +43,11 @@ module.exports  = {
         case 'post':
           let payload   = req.payload;
           payload.dm    = searchBy.account;
+          let currentAccountCampaigns =  req.auth.credentials.campaigns;
 
           new Campaign(payload).save((err, campaign)=>{
             if(err) console.log(err);
+
 
             done();
             res(campaign).type("application/json");

@@ -21,6 +21,8 @@ export default class CampaignPicker extends Component{
     let campaigns = CampaignsStore.getState().campaigns;
     CampaignsStore.listen(this.campaignsStoreListener);
 
+    console.log('campaign picker component will mount', campaigns);
+
     if(campaigns == null) CampaignsActions.load();
     else this.setState({campaigns: campaigns});
 
@@ -37,6 +39,7 @@ export default class CampaignPicker extends Component{
   }
 
   campaignsStoreListener(campaigns){
+    console.log('campaign store listener', campaigns);
     this.setState(campaigns);
   }
 }

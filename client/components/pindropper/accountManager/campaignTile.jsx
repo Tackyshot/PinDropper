@@ -16,6 +16,7 @@ export default class CampaignTile extends Component{
 
 
   render(){
+    console.log('render campaign tile', this.props);
     let style = Style.styles();
 
     let campaign = this.props.campaign;

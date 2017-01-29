@@ -8,6 +8,7 @@ export default class ManagerContent extends Component{
   }
 
   render(){
+    console.log('render manager Content');
     return(
       <div>
         {this.constructor.determineContent(this.props.settings)}
