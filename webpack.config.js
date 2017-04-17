@@ -11,7 +11,7 @@ let webpackConfig = {
   resolve:{
     alias:{
       common: `${__dirname}/client/components/_common`,
-      tools: `${__dirname}/client/components/_tools`,
+      tools: `${__dirname}/client/_tools`,
       theme: `${__dirname}/client/components/_common/_theme/theme.jsx`,
       style: './style/style.js',
       actions: `${__dirname}/client/actions`,

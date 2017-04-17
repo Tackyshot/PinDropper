@@ -52,7 +52,8 @@ module.exports = {
   ],
   health: {
     hpMax: 0,
-    hpCurrent: 0
+    hpCurrent: 0,
+    subdual: 0
   },
   ac: {
     natAc: 0,
@@ -233,7 +234,7 @@ module.exports = {
     skillList: [
       {
         name: '',
-        mod: '', //refrences str or cha or something.
+        mod: '', //refrences skill mod like str or cha or something.
         ranks: 0,
         misc: [],
         classSkill: false,
@@ -277,6 +278,15 @@ module.exports = {
         }
       }
     ], //0 lvl
+    1:[],
+    2:[],
+    3:[],
+    4:[],
+    5:[],
+    6:[],
+    7:[],
+    8:[],
+    9:[]
   }, //spells
   notes:[
     {

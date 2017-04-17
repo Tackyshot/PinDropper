@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import SettingsStore from 'stores/settings.store.js';
 
 import AccountManager from './accountManager/accountManager.jsx';
+import CharacterManager from './characterManager/characterManager.jsx';
 
 export default class PinDropper extends Component{
   constructor(props){
@@ -27,7 +28,8 @@ export default class PinDropper extends Component{
 
     return(
       <div>
-        <AccountManager isOpen={false} settings={this.state.settings} />
+        <AccountManager {...this.props} isOpen={false} settings={this.state.settings} />
+        <CharacterManager {...this.props} />
       </div>
     )
   }

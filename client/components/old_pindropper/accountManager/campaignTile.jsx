@@ -27,7 +27,7 @@ export default class CampaignTile extends Component{
         <div className={Style.css(style.tileHeader)}>
           <p className={Style.css(style.headerTitle)} >{campaign.name}</p>
         </div>
-        <Row className={Style.css(style.tileFooter)} justify="flex-start" >
+        <Row style={style.tileFooter} justify="flex-start" >
           <SvgButton
             onClick={(e)=>SettingsActions.updateSetting("campaign", campaign._id)}
             label="Play Campaign"
