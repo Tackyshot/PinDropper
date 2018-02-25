@@ -1,2 +1,7 @@
-/node_modules/
-/.idea/
+#ignore jetbrains bullshit
+.idea/
+
+#ignore node modules
+node_modules/
+
+.DS_Store

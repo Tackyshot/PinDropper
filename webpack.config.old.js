@@ -5,32 +5,29 @@ const path    = require('path');
 let webpackConfig = {
   entry: "./client/app.jsx",
   output: {
-    path:path.resolve(__dirname, 'server/services/http/content/js/'),
+    path:path.resolve(__dirname, 'server/assets/client/js/'),
     filename: "bundle.js"
   },
   resolve:{
-    modules:[
-      "node_modules",
-      path.join(__dirname, 'client')
-    ],
     alias:{
+      common: `${__dirname}/client/components/_common`,
+      tools: `${__dirname}/client/_tools`,
+      theme: `${__dirname}/client/components/_common/_theme/theme.jsx`,
+      style: './style/style.js',
       actions: `${__dirname}/client/actions`,
       stores: `${__dirname}/client/stores`,
-      tools: `${__dirname}/client/`,
-      common: `${__dirname}/client/components/_common`,
-      textfield: `${__dirname}/client/components/_common/textField/`,
-      theme: `${__dirname}/client/components/_common/_theme/theme.jsx`,
-      corkboard: `${__dirname}/client/components/_common/corkboard/`,
-      style: './css/style.js'
+      svg: `${__dirname}/client/components/_common/svg`,
+      inputs: `${__dirname}/client/components/_common/inputs/inputs.jsx`,
+      corkboard: `${__dirname}/client/components/_common/corkboard/`
     },
-    extensions: [".webpack.js", ".web.js", ".js", '.jsx']
+    extensions: ["", ".webpack.js", ".web.js", ".js", '.jsx']
   },
   module:{
-    rules: [
+    loaders: [
       {
         test: /(\.jsx$|\.js$)/,
         exclude: /(node_modules|bower_components)/,
-        loader: 'babel-loader'
+        loaders: ['babel']
       },
       {
         test: /\.css$/,
@@ -38,8 +35,6 @@ let webpackConfig = {
       }
     ]
   },
-
-  context: __dirname,
   plugins: [
     new webpack.DefinePlugin({
       "process.env": {

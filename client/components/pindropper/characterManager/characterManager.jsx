@@ -1,11 +1,14 @@
 import React, {Component} from 'react';
+import {CharacterTiles, CharacterTile} from './characterPicker/characterPicker.jsx';
 //import any other dependencies here.
 
 export default class CharacterManager extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      characters: []
+    };
 
     //rebindings for custom methods go here.
   }
@@ -20,9 +23,11 @@ export default class CharacterManager extends Component {
 
     //place JSX between the parens!
     return (
-      <div>
-
-      </div>
+      <CharacterTiles>
+        {this.state.characters.map((character) => {
+          return <CharacterTile character={character} />
+        })}
+      </CharacterTiles>
     );
   }
 

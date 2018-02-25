@@ -31226,6 +31226,8 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _characterPicker = __webpack_require__(279);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -31244,7 +31246,9 @@
 
 	    var _this = _possibleConstructorReturn(this, (CharacterManager.__proto__ || Object.getPrototypeOf(CharacterManager)).call(this, props));
 
-	    _this.state = {};
+	    _this.state = {
+	      characters: []
+	    };
 
 	    //rebindings for custom methods go here.
 	    return _this;
@@ -31262,7 +31266,13 @@
 	      //Iterate through list of Characters Render a Character Tile.
 
 	      //place JSX between the parens!
-	      return _react2.default.createElement('div', null);
+	      return _react2.default.createElement(
+	        _characterPicker.CharacterTiles,
+	        null,
+	        this.state.characters.map(function (character) {
+	          return _react2.default.createElement(_characterPicker.CharacterTile, { character: character });
+	        })
+	      );
 	    }
 	  }, {
 	    key: 'componentWillUnmount',
@@ -31279,6 +31289,240 @@
 
 	exports.default = CharacterManager;
 	CharacterManager.propTypes = {};
+
+/***/ },
+/* 279 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.CharacterTile = exports.CharacterTiles = undefined;
+
+	var _characterTiles = __webpack_require__(280);
+
+	var _characterTiles2 = _interopRequireDefault(_characterTiles);
+
+	var _characterTile = __webpack_require__(282);
+
+	var _characterTile2 = _interopRequireDefault(_characterTile);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.CharacterTiles = _characterTiles2.default;
+	exports.CharacterTile = _characterTile2.default;
+
+/***/ },
+/* 280 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _gridlock = __webpack_require__(272);
+
+	var _characterMenu = __webpack_require__(281);
+
+	var _characterMenu2 = _interopRequireDefault(_characterMenu);
+
+	var _settingsStore = __webpack_require__(208);
+
+	var _settingsStore2 = _interopRequireDefault(_settingsStore);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	//import any other dependencies here.
+
+	var CharacterTiles = function (_Component) {
+	  _inherits(CharacterTiles, _Component);
+
+	  function CharacterTiles(props) {
+	    _classCallCheck(this, CharacterTiles);
+
+	    var _this = _possibleConstructorReturn(this, (CharacterTiles.__proto__ || Object.getPrototypeOf(CharacterTiles)).call(this, props));
+
+	    var settings = _settingsStore2.default.getState();
+
+	    _this.state = {
+	      selectedId: settings.character
+	    };
+
+	    //rebindings for custom methods go here.
+	    _this.handleTileClick = _this.handleTileClick.bind(_this);
+	    return _this;
+	  }
+
+	  _createClass(CharacterTiles, [{
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      _settingsStore2.default.listen(this.handleSettingsChange);
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this2 = this;
+
+	      //place JSX between the parens!
+	      return _react2.default.createElement(
+	        _gridlock.Row,
+	        null,
+	        _react2.default.createElement(
+	          _gridlock.Column,
+	          null,
+	          _react2.default.createElement(_characterMenu2.default, { selectedId: this.state.selectedId })
+	        ),
+	        _react2.default.createElement(
+	          _gridlock.Column,
+	          null,
+	          _react2.default.Children.map(this.props.children, function (CharacterTile) {
+	            return _react2.default.cloneElement(CharacterTile, {
+	              isSelected: _this2.determineSelected(CharacterTile),
+	              handleClick: _this2.handleTileClick
+	            });
+	          })
+	        )
+	      );
+	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {}
+
+	    //========================================================================
+	    // PLACE CUSTOM METHODS AND HANDLERS BELOW HERE
+	    //========================================================================
+
+	  }, {
+	    key: 'determineSelected',
+	    value: function determineSelected(CharacterTile) {
+	      return CharacterTile.props.id === this.state.selectedId;
+	    } //determineSelected
+
+	  }, {
+	    key: 'handleTileClick',
+	    value: function handleTileClick(e) {}
+	    //Trigger character selection in settings actions
+	    //handleTileClick
+
+	  }, {
+	    key: 'handleSettingsChange',
+	    value: function handleSettingsChange(nSettings) {
+	      if (nSettings.character !== this.state.selectedId) {
+	        this.setState({
+	          character: nSettings.character
+	        });
+	      }
+	    }
+	  }]);
+
+	  return CharacterTiles;
+	}(_react.Component); //end CharacterWrapper class
+
+	exports.default = CharacterTiles;
+	CharacterTiles.propTypes = {
+	  selectedId: _react2.default.PropTypes.any || null //the ID of the selected character at that given moment.
+	};
+
+/***/ },
+/* 281 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+/***/ },
+/* 282 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _gridlock = __webpack_require__(272);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	//import any other dependencies here.
+
+	var CharacterTile = function (_Component) {
+	  _inherits(CharacterTile, _Component);
+
+	  function CharacterTile(props) {
+	    _classCallCheck(this, CharacterTile);
+
+	    var _this = _possibleConstructorReturn(this, (CharacterTile.__proto__ || Object.getPrototypeOf(CharacterTile)).call(this, props));
+
+	    _this.state = {};
+
+	    //rebindings for custom methods go here.
+	    return _this;
+	  }
+
+	  _createClass(CharacterTile, [{
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {}
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var character = this.props.character;
+
+	      //place JSX between the parens!
+	      return _react2.default.createElement(
+	        _gridlock.Block,
+	        { onClick: this.props.handleClick },
+	        _react2.default.createElement('img', { src: 'https://placekitten.com/g/50/50', width: '50px', alt: character.first_name + ' ' + character.last_name })
+	      );
+	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {}
+
+	    //========================================================================
+	    // PLACE CUSTOM METHODS AND HANDLERS BELOW HERE
+	    //========================================================================
+
+	  }]);
+
+	  return CharacterTile;
+	}(_react.Component); //end CharTile class
+
+	exports.default = CharacterTile;
+	CharacterTile.propTypes = {
+	  character: _react2.default.PropTypes.object,
+
+	  //the following are handled via Prop injection in './characterTiles.jsx'
+	  isSelected: _react2.default.PropTypes.bool,
+	  handleClick: _react2.default.PropTypes.func
+	};
 
 /***/ }
 /******/ ]);

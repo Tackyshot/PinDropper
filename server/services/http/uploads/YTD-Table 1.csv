@@ -1,0 +1,53 @@
+,,,,,,,,
+Patient Manifest,,,,,,LEGEND,Green, Paid Claims
+,,,,,,,Red,Denied Claims
+Clinic Dr. Ghosn,,,,,,,Yellow,Paid Deductable/Coins Only
+,,,,,,,,
+LAST NAME,First Name,DOS,Ins Company,Deduct,CoINS,Paid,Check Date,Comments
+Bevil,Patricia,12-Feb-16,Medicare,$0.00,$85.18,$333.91,2-Mar-16,EFT #893381048
+Mcever,Wylie,12-Feb-16,BCBS,$0.00,$0.00,$0.00,26-Feb-16,
+Mitchell,Matt,12-Feb-16,Humana,$0.00,$0.00,$638.87,18-Feb-16,CHECK #000056029
+Smith,Nancy,12-Feb-16,Medicare,$92.56,$66.67,$261.34,2-Mar-16,EFT #893381048
+Geraghty,Michael,16-Feb-16,Aetna,$0.00,$0.00,$336.04,4-Mar-16,EFT #816060510000904
+Ledbetter,Deborah,16-Feb-16,United Health,$0.00,$98.40,$389.76,16-Mar-16,CHECK REF#2655
+Edwards,Donnis,17-Feb-16,United Health,$0.00,$98.40,$389.76,16-Mar-16,CHECK #C6776585
+English,Jennifer,17-Feb-16,BCBS,$0.00,$0.00,$0.00,26-Feb-16,Denied
+Farrar,Kenneth,17-Feb-16,BCBS,$0.00,$0.00,$520.82,1-Mar-16,EFT#710867124
+Oakley,Dawn,17-Feb-16,Medicare,$52.48,$74.68,$292.77,4-Mar-16,EFT#893396698
+Reed,Jeannie,17-Feb-16,Medicare,$0.00,$85.18,$333.91,4-Mar-16,EFT#893396698
+Smith,Thomas,17-Feb-16,Humana,$301.50,$0.00,$337.37,21-Feb-16,CHECK #000045800
+Dudley,William,19-Feb-16,BCBS,$132.56,$0.00,$0.00,11-Mar-16,All towards deductible
+Lingerfelt,Angela,19-Feb-16,Humana,$0.00,$0.00,$638.87,28-Feb-16,EFT#3339493522
+Shirley,David,19-Feb-16,Medicare,$0.00,$0.00,$22.73,2-Mar-16,No primary ICD10 Selected
+Shirley,Mary,19-Feb-16,Medicare,$0.00,$0.00,$85.18,29-Feb-16,EFT#3339493522
+Waits,Mary,19-Feb-16,Humana,$138.87,$0.00,$500.00,27-Feb-16,
+Sfeir,Richard,22-Feb-16,United Health,$0.00,$0.00,$377.16,1-Mar-16,
+Diaz,Manuel,23-Feb-16,BCBS,$106.90,$0.00,$0.00,4-Mar-16,All towards deductible
+Lancaster,Jerry,23-Feb-16,BCBS,$0.00,$0.00,$368.39,3-Mar-16,
+Mckinzie,John,23-Feb-16,United Health,$10.80,$67.28,$296.30,8-Mar-16,
+Roberts,Kelvin,23-Feb-16,BCBS,$0.00,$0.00,$377.16,4-Mar-16,
+Youngblood,Mary,23-Feb-16,United Health,$0.00,$98.40,$389.76,3-Mar-16,
+Glass,James,24-Feb-16,BCBS,$0.00,$0.00,$0.00,11-Mar-16,No primary ICD10 Selected
+Mullinax,Judith,24-Feb-16,Medicare,$0.00,$16.47,$64.56,14-Mar-16,Paid without Primary ICD10
+Fields,Stanley,25-Feb-16,Humana,$0.00,$0.00,$286.41,7-Mar-16,Paid without Primary ICD10
+Monroe,Rhonda,25-Feb-16,MedC/GA Comm Health,$0.00,$85.18,$333.91,14-Mar-16,
+Wheatley,Thomas,25-Feb-16,BCBS,,,,,
+Carrier,James,26-Feb-16,BCBS,$132.26,$0.00,$0.00,3-Mar-16,Applied to Deductible
+Loggins,Debbie,29-Feb-16,,$0.00,$0.00,$199.00,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
